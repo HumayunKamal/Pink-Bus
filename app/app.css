@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 columns */
+  column-gap: 20px; /* Gutter: 20px */
+  padding: 0 120px;
+
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  @apply bg-primary-bg dark:bg-gray-950;
+
+  font: normal 400 1rem /1.5 "Gudea", serif;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  .heading {
+    @apply text-3xl lg:text-6xl font-secondary font-bold;
+  }
+  .sub-heading {
+    @apply text-xl lg:text-3xl font-secondary font-bold;
+  }
+  .title {
+    @apply text-lg lg:text-2xl font-secondary font-bold;
+  }
+  .sub-title {
+    @apply text-md lg:text-xl font-secondary font-bold;
+  }
+  .caption {
+    @apply text-xs font-secondary;
+  }
+}
+
+/* ScrollBar Functionality */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* Primary color */
+  background: #08888c;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #edeec9;
+}
+
+a:hover {
+  color: #08888c;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #2f2f2f;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #08888c;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
