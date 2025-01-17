@@ -10,5 +10,6 @@
 
 - React framework (react-router)
 - Tailwind css
+- Motion
 
 [def]: /public/favicon.ico
