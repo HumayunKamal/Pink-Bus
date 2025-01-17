@@ -1,4 +1,4 @@
-import { socialLinks, footerLinks } from "./links";
+import { socialLinks, footerLinks, navLinks } from "./links";
 import { heroData } from "./constData";
 
-export { socialLinks, footerLinks, heroData };
+export { socialLinks, footerLinks, heroData, navLinks };

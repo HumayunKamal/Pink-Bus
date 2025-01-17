@@ -29,7 +29,7 @@ body {
   margin: 0 2rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   body {
     margin: 0 7.5rem;
     column-gap: 20px;
@@ -37,6 +37,9 @@ body {
 }
 
 @layer components {
+  .group-hover-transition {
+    @apply group-hover:duration-500 group-hover:ease-in-out;
+  }
   .heading {
     @apply font-secondary text-3xl font-bold lg:text-6xl;
   }
@@ -77,7 +80,11 @@ body {
 }
 
 a:hover {
-  color: #08888c;
+  color: #000;
+  /* transition: 400ms ease-in-out; */
+}
+a:focus {
+  outline: none;
 }
 
 button:focus {
@@ -91,8 +98,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #2f2f2f;
+  background-color: #ffb6c1;
+  color: #ffb6c1;
   cursor: pointer;
+
   transition: border-color 0.25s;
 }
 button:hover {

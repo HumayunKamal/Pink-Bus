@@ -1,2 +1,3 @@
 import heroBackground from "./heroBackground.mp4";
-export { heroBackground };
+import whiteLogo from "./whiteLogo.png";
+export { heroBackground, whiteLogo };

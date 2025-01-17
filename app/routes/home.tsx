@@ -33,26 +33,28 @@ export default function Home() {
         ></video>
         <div className="absolute inset-0 bg-secondary/50" />
       </div>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt porro
-      ab illo iure nam dignissimos excepturi in neque, quam officiis voluptatem
-      quibusdam error minus qui animi reprehenderit? Inventore, explicabo
-      accusamus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Delectus tempore unde est dolorem eveniet non quisquam veniam corrupti
-      animi debitis ratione deserunt voluptate voluptates rem error
-      voluptatibus, aspernatur repellat inventore. Laudantium illum aliquam
-      natus omnis, tempora cum eius! Odit recusandae placeat molestias omnis
-      suscipit fugiat iste adipisci voluptatem optio in possimus quod dicta
-      maiores repudiandae, corrupti impedit illo? Excepturi, labore. Sed
-      voluptas enim aliquid voluptatum, voluptatem nemo laboriosam impedit
-      asperiores praesentium, earum ipsa reprehenderit voluptatibus molestias
-      tempora ducimus ea, iusto deleniti. Delectus porro enim ut mollitia vero
-      iusto aut consectetur. Reiciendis non aliquid fugit velit cum ab a fuga
-      qui ea rem, ipsa expedita odit perferendis. Sapiente libero harum
-      reprehenderit maiores nostrum, nulla doloremque, nesciunt molestiae cumque
-      officiis nihil labore. Error quam quia assumenda quisquam sapiente illo
-      qui minima eius esse minus. Perferendis exercitationem molestiae nobis
-      porro eaque distinctio voluptatibus facere eos magni, asperiores
-      consequuntur dolores! A quae tempore architecto.
+      <div className="col-span-full">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt porro
+        ab illo iure nam dignissimos excepturi in neque, quam officiis
+        voluptatem quibusdam error minus qui animi reprehenderit? Inventore,
+        explicabo accusamus. Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Delectus tempore unde est dolorem eveniet non quisquam veniam
+        corrupti animi debitis ratione deserunt voluptate voluptates rem error
+        voluptatibus, aspernatur repellat inventore. Laudantium illum aliquam
+        natus omnis, tempora cum eius! Odit recusandae placeat molestias omnis
+        suscipit fugiat iste adipisci voluptatem optio in possimus quod dicta
+        maiores repudiandae, corrupti impedit illo? Excepturi, labore. Sed
+        voluptas enim aliquid voluptatum, voluptatem nemo laboriosam impedit
+        asperiores praesentium, earum ipsa reprehenderit voluptatibus molestias
+        tempora ducimus ea, iusto deleniti. Delectus porro enim ut mollitia vero
+        iusto aut consectetur. Reiciendis non aliquid fugit velit cum ab a fuga
+        qui ea rem, ipsa expedita odit perferendis. Sapiente libero harum
+        reprehenderit maiores nostrum, nulla doloremque, nesciunt molestiae
+        cumque officiis nihil labore. Error quam quia assumenda quisquam
+        sapiente illo qui minima eius esse minus. Perferendis exercitationem
+        molestiae nobis porro eaque distinctio voluptatibus facere eos magni,
+        asperiores consequuntur dolores! A quae tempore architecto.
+      </div>
     </>
   );
 }

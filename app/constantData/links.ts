@@ -1,3 +1,14 @@
+const navLinks = [
+  {
+    name: "Bookings",
+    href: "/bookings",
+  },
+  {
+    name: "Log in",
+    href: "/login",
+  },
+];
+
 const socialLinks = [
   {
     name: "X",
@@ -18,4 +29,4 @@ const footerLinks = [
   },
 ];
 
-export { socialLinks, footerLinks };
+export { socialLinks, footerLinks, navLinks };
