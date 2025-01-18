@@ -4,8 +4,8 @@ export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
 
   theme: {
-    // container: { center: true, padding: "0 7.5rem" },
     extend: {
+      screens: { "3xl": "1800px" },
       colors: {
         // Branding
         primary: "#FFB6C1", // pink

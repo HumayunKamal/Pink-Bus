@@ -1,6 +1,13 @@
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
+import { Link } from "react-router";
 import { heroBackground } from "~/assets";
 import type { Route } from "./+types/home";
-import { useEffect, useLayoutEffect, useRef } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -10,20 +17,39 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const playbackRef = useRef<HTMLVideoElement | null>(null);
+  const { scrollYProgress } = useScroll();
 
-  useEffect(() => {
-    if (playbackRef.current) {
-      playbackRef.current.playbackRate = 0.5;
-    }
-  }, []);
+  // Spring for smooth scrolling
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+  const scrollValue = [0.05, 0.1];
+
+  const display = useTransform(smoothProgress, scrollValue, ["none", "block"]);
+
+  const staggerChild = {
+    initial: { y: 10, opacity: 0 },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        ease: "easeIn",
+      },
+    },
+  };
 
   return (
     <>
       {/* Hero Section */}
       <div className="col-span-full row-start-1 -mx-[2rem] h-dvh sm:-mx-[7.5rem]">
         <video
-          ref={playbackRef}
+          ref={(video) => {
+            if (video) {
+              video.playbackRate = 0.5; // Set playback rate directly
+            }
+          }}
           src={heroBackground}
           className="absolute h-full w-full object-cover object-center"
           autoPlay
@@ -31,30 +57,58 @@ export default function Home() {
           // controls
           // loop
         ></video>
+
+        {/* overlay */}
         <div className="absolute inset-0 bg-secondary/50" />
+
+        {/* Hero Section Description */}
+        <AnimatePresence>
+          <motion.div
+            className="3xl:space-y-4 absolute left-[10%] top-[30%] space-y-2 text-secondary-text xl:space-y-3"
+            initial="initial"
+            whileInView="animate"
+            style={{
+              display,
+              transitionDuration: "0.5s",
+              transitionTimingFunction: "ease-in",
+            }}
+            variants={{
+              animate: {
+                transition: {
+                  duration: 0.3,
+                  ease: "easeInOut",
+                  staggerChildren: 0.6,
+                },
+              },
+            }}
+          >
+            <motion.h1
+              variants={staggerChild}
+              className="heading text-primary-text"
+            >
+              Pink Bus
+            </motion.h1>
+
+            <motion.p
+              variants={staggerChild}
+              className="ml-1 w-[260px] 2xl:w-[400px] 2xl:text-2xl"
+            >
+              Transport for girls. Bus service where girl can book ride and
+              travel safely without wasting time.
+            </motion.p>
+
+            <motion.div className="ml-1 pt-6 2xl:pt-10" variants={staggerChild}>
+              <Link to="#bookingSection">
+                <button className="title button-effect-1 h-[50px] w-[120px] rounded-xl bg-primary font-normal text-secondary-text drop-shadow-pink lg:h-[55px] lg:w-[160px] lg:rounded-[20px] 2xl:h-[80px] 2xl:w-[200px]">
+                  Book Now
+                </button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </div>
-      <div className="col-span-full">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt porro
-        ab illo iure nam dignissimos excepturi in neque, quam officiis
-        voluptatem quibusdam error minus qui animi reprehenderit? Inventore,
-        explicabo accusamus. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Delectus tempore unde est dolorem eveniet non quisquam veniam
-        corrupti animi debitis ratione deserunt voluptate voluptates rem error
-        voluptatibus, aspernatur repellat inventore. Laudantium illum aliquam
-        natus omnis, tempora cum eius! Odit recusandae placeat molestias omnis
-        suscipit fugiat iste adipisci voluptatem optio in possimus quod dicta
-        maiores repudiandae, corrupti impedit illo? Excepturi, labore. Sed
-        voluptas enim aliquid voluptatum, voluptatem nemo laboriosam impedit
-        asperiores praesentium, earum ipsa reprehenderit voluptatibus molestias
-        tempora ducimus ea, iusto deleniti. Delectus porro enim ut mollitia vero
-        iusto aut consectetur. Reiciendis non aliquid fugit velit cum ab a fuga
-        qui ea rem, ipsa expedita odit perferendis. Sapiente libero harum
-        reprehenderit maiores nostrum, nulla doloremque, nesciunt molestiae
-        cumque officiis nihil labore. Error quam quia assumenda quisquam
-        sapiente illo qui minima eius esse minus. Perferendis exercitationem
-        molestiae nobis porro eaque distinctio voluptatibus facere eos magni,
-        asperiores consequuntur dolores! A quae tempore architecto.
-      </div>
+
+      <div id="bookingSection">Booking Section</div>
     </>
   );
 }

@@ -29,7 +29,7 @@ const Header = () => {
           y: moveY,
           transitionDuration: "0.5s",
         }}
-        className="z-10 col-span-full row-start-1 mt-10 flex h-10 items-center justify-center rounded-xl bg-primary/60 text-secondary-text backdrop-blur-[3px] lg:mt-12 lg:h-20 lg:rounded-3xl 2xl:col-span-10 2xl:col-start-2 2xl:h-24"
+        className="z-10 col-span-full row-start-1 mt-10 flex h-10 items-center justify-center rounded-xl bg-primary/60 text-secondary-text backdrop-blur-[3px] lg:mt-12 lg:h-20 lg:rounded-3xl 2xl:h-24"
       >
         <motion.div
           initial="initial"
@@ -109,11 +109,11 @@ const NavigationLinks = () => (
       <NavLink className="group" key={link.name} to={link.href}>
         {({ isActive }) => (
           <div
-            className={`${isActive && "text-grey"} group-hover-transition relative 2xl:text-xl`}
+            className={`${isActive && "text-grey"} group-hover-transition relative group-hover:text-secondary 2xl:text-xl`}
           >
             {link.name}
             <hr
-              className={`${isActive && "w-full border-grey"} group-hover-transition absolute w-0 border-secondary group-hover:w-full sm:mt-1`}
+              className={`${isActive && "w-full !border-grey"} group-hover-transition absolute w-0 border-secondary group-hover:w-full sm:mt-1`}
             />
           </div>
         )}

@@ -14,7 +14,7 @@ html {
   box-sizing: content-box;
 
   color-scheme: light dark;
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -37,23 +37,29 @@ body {
 }
 
 @layer components {
-  .group-hover-transition {
-    @apply group-hover:duration-500 group-hover:ease-in-out;
-  }
   .heading {
-    @apply font-secondary text-3xl font-bold lg:text-6xl;
+    @apply font-secondary text-3xl font-bold lg:text-5xl xl:text-6xl;
   }
   .sub-heading {
     @apply font-secondary text-xl font-bold lg:text-3xl;
   }
   .title {
-    @apply font-secondary text-lg font-bold lg:text-2xl;
+    @apply font-secondary text-lg font-bold lg:text-2xl 2xl:text-3xl;
   }
   .sub-title {
     @apply text-md font-secondary font-bold lg:text-xl;
   }
   .caption {
     @apply font-secondary text-xs;
+  }
+
+  .group-hover-transition {
+    @apply duration-500 ease-in-out;
+  }
+
+  /* Move button up and scale little bit */
+  .button-effect-1 {
+    @apply duration-300 ease-in-out hover:-translate-y-[3px] hover:scale-[1.03];
   }
 }
 
@@ -79,35 +85,10 @@ body {
   background: #ffb6c1;
 }
 
-a:hover {
-  color: #000;
-  /* transition: 400ms ease-in-out; */
-}
 a:focus {
   outline: none;
 }
 
 button:focus {
-  outline: none !important;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #ffb6c1;
-  color: #ffb6c1;
-  cursor: pointer;
-
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #08888c;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
 }
