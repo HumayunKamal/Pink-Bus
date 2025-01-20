@@ -1,3 +1,4 @@
 import Footer from "./footer";
 import Header from "./header";
-export { Footer, Header };
+import ButtonPrimary from "./buttonPrimary";
+export { Footer, Header, ButtonPrimary };
