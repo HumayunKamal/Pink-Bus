@@ -6,9 +6,11 @@ import {
   useTransform,
 } from "motion/react";
 import { heroBackground } from "~/assets";
-import { ButtonPrimary } from "~/components";
+import { ButtonPrimary, IconButtonPrimary, SelectionInput } from "~/components";
+import { AfternoonSun, MorningSvg } from "~/components/svgs";
 import type { Route } from "./+types/home";
 import classes from "./home.module.css";
+import { useState } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -18,6 +20,10 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const [shiftTime, setShiftTIme] = useState<"morning" | "afternoon">(
+    "morning",
+  );
+
   const { scrollYProgress } = useScroll();
 
   // Spring for smooth scrolling
@@ -125,11 +131,34 @@ export default function Home() {
         id="bookingSection"
         className={`${classes.bookingSection} col-span-full mx-auto bg-secondary-bg p-4 drop-shadow-pink sm:!-translate-y-1/4 lg:h-[250px] lg:w-[768px] lg:!-translate-y-1/2`}
       >
-        <div className="">
+        {/* Code for Mobile  */}
+
+        <div className="flex flex-row gap-3">
+          <SelectionInput
+            name="timing"
+            labelText="Morning"
+            selectedTime={shiftTime}
+            value="morning"
+            onChange={setShiftTIme}
+          />
+          <SelectionInput
+            name="timing"
+            labelText="Afternoon"
+            selectedTime={shiftTime}
+            value="afternoon"
+            onChange={setShiftTIme}
+          />
+        </div>
+
+        {/* Code for Tab,Laptop  */}
+        <div className="hidden flex-col items-center md:flex">
           <div className="">
-            Booking Section Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit. Aliquid quis pariatur, est tempora officia, saepe itaque dicta
-            unde debitis eveniet
+            <IconButtonPrimary title="Morning">
+              <MorningSvg className="h-[22px] w-[22px] stroke-secondary-text" />
+            </IconButtonPrimary>
+            <IconButtonPrimary title="Morning">
+              <AfternoonSun className="h-[22px] w-[22px] stroke-secondary-text" />
+            </IconButtonPrimary>
           </div>
 
           <div className=" ">
@@ -139,11 +168,6 @@ export default function Home() {
             autem doloribus?
           </div>
         </div>
-      </div>
-      <div className="col-span-full">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-        sunt soluta, deleniti architecto animi, iste quis voluptas qui aliquid
-        ipsum explicabo modi eum nobis ea tenetur eos similique autem doloribus?
       </div>
     </>
   );

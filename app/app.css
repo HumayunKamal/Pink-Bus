@@ -16,6 +16,9 @@ html {
   color-scheme: light dark;
   scroll-behavior: smooth;
 
+  /* accent-color: #ffb6c1;
+   */
+
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
@@ -56,7 +59,7 @@ body {
 
 @layer components {
   .buttonPrimary {
-    @apply title button-effect-1 bg-primary font-normal text-secondary-text drop-shadow-pink;
+    @apply title bg-primary font-normal text-secondary-text drop-shadow-pink;
   }
 }
 
@@ -91,11 +94,41 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #ffb6c1;
 }
+:focus {
+  outline: none;
+}
 
-a:focus {
+input[type="radio"] {
+  appearance: none; /* General */
+  border: 2px dotted #ffb6c1; /* Add custom styling */
+  border-radius: 50%; /* Make it circular */
+  width: 16px;
+  height: 16px;
+}
+
+input[type="radio"]:checked {
+  background-color: #ffb6c1;
+  border-color: #ffb6c1;
+}
+
+input[type="radio"]::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 1px;
+}
+
+/* a:focus {
   outline: none;
 }
 
 button:focus {
   outline: none;
 }
+
+input:focus {
+  outline: none;
+} */
