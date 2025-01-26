@@ -5,12 +5,20 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
+import { useState } from "react";
 import { heroBackground } from "~/assets";
-import { ButtonPrimary, IconButtonPrimary, SelectionInput } from "~/components";
-import { AfternoonSun, MorningSvg } from "~/components/svgs";
+import {
+  ButtonPrimary,
+  Dialog,
+  DropDownInput,
+  IconButtonPrimary,
+  SelectionInput,
+} from "~/components";
+import { AfternoonSun, MorningSvg, Submit } from "~/components/svgs";
+import { City, heroData } from "~/constantData";
+import { getDefaultMaxDate } from "~/utils";
 import type { Route } from "./+types/home";
 import classes from "./home.module.css";
-import { useState } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -20,22 +28,32 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const [shiftTime, setShiftTIme] = useState<"morning" | "afternoon">(
+  const [selectedTime, setSelectedTime] = useState<"morning" | "afternoon">(
     "morning",
   );
+  const [selectedCityFrom, setSelectedCityFrom] = useState<City>(City.Chakwal);
+  const [selectedCityTo, setSelectedCityTo] = useState<City>(City.Faizabad);
+  const cityOptions = Object.values(City);
+  const [journeyDate, setJourneyDate] = useState<string>(
+    new Date().toISOString().split("T")[0],
+  );
+
+  const [error, setError] = useState("");
+
+  const maxJourneyDate = getDefaultMaxDate();
 
   const { scrollYProgress } = useScroll();
 
-  // Spring for smooth scrolling
+  /* Spring for smooth scrolling */
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
   const scrollValue = [0.05, 0.1];
-
   const display = useTransform(smoothProgress, scrollValue, ["none", "block"]);
 
+  /* Stagger Effects */
   const staggerChildForButton = {
     initial: { y: 10, opacity: 0 },
     animate: {
@@ -57,6 +75,17 @@ export default function Home() {
         ease: [0.55, 0.085, 0.68, 0.53],
       },
     },
+  };
+
+  const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (selectedCityFrom === selectedCityTo) {
+      setError("Both cities can't be same");
+      const timeoutId = setTimeout(() => {
+        setError("");
+      }, 2000);
+      return () => clearTimeout(timeoutId);
+    }
+    console.log(selectedCityFrom, selectedCityTo, journeyDate, selectedTime);
   };
 
   return (
@@ -105,15 +134,14 @@ export default function Home() {
               variants={staggerChild}
               className="heading bg-gradient-to-r from-primary-text to-secondary-text bg-clip-text text-transparent"
             >
-              Pink Bus
+              {heroData.title}
             </motion.h1>
 
             <motion.p
               variants={staggerChild}
               className="ml-1 w-[260px] 2xl:w-[400px] 2xl:text-2xl"
             >
-              Transport for girls. Bus service where girl can book ride and
-              travel safely without wasting time.
+              {heroData.description}
             </motion.p>
 
             <motion.div
@@ -132,25 +160,74 @@ export default function Home() {
         className={`${classes.bookingSection} col-span-full mx-auto bg-secondary-bg p-4 drop-shadow-pink sm:!-translate-y-1/4 lg:h-[250px] lg:w-[768px] lg:!-translate-y-1/2`}
       >
         {/* Code for Mobile  */}
+        <div className="flex flex-col items-center gap-2 py-2 md:hidden">
+          {/* Selection : Timing */}
+          <div className="flex w-full flex-row justify-around">
+            <SelectionInput
+              name="timing"
+              labelText="Morning"
+              value="morning"
+              selectedValue={selectedTime}
+              onChange={setSelectedTime}
+            />
+            <SelectionInput
+              name="timing"
+              labelText="Afternoon"
+              value="afternoon"
+              selectedValue={selectedTime}
+              onChange={setSelectedTime}
+            />
+          </div>
 
-        <div className="flex flex-row gap-3">
-          <SelectionInput
-            name="timing"
-            labelText="Morning"
-            selectedTime={shiftTime}
-            value="morning"
-            onChange={setShiftTIme}
-          />
-          <SelectionInput
-            name="timing"
-            labelText="Afternoon"
-            selectedTime={shiftTime}
-            value="afternoon"
-            onChange={setShiftTIme}
-          />
+          {/* Selection Inputs */}
+          <div className="h-auto w-full space-y-2 rounded-xl border-[0.1px] border-primary px-2 py-4">
+            {/* Selection: City from */}
+            <DropDownInput
+              selectedValue={selectedCityFrom}
+              options={cityOptions}
+              label="City From"
+              setSelectedValue={setSelectedCityFrom}
+            />
+
+            {/* Selection: City to*/}
+            <DropDownInput
+              selectedValue={selectedCityTo}
+              options={cityOptions}
+              label="City to"
+              setSelectedValue={setSelectedCityTo}
+            />
+
+            {/* Selction : Date */}
+            <div className="flex cursor-pointer justify-between text-primary">
+              <label htmlFor="journeyDate">Journey Date</label>
+              <input
+                type="date"
+                id="journeyDate"
+                min={journeyDate}
+                max={maxJourneyDate}
+                value={journeyDate}
+                onChange={(e) => setJourneyDate(e.target.value)}
+                className="w-[55%] cursor-pointer"
+                required
+              />
+            </div>
+          </div>
+
+          <Dialog error={error} />
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            onClick={submitHandler}
+            disabled={Boolean(error)}
+            className="mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] bg-primary text-secondary-text drop-shadow-pink duration-300 ease-in hover:-translate-y-1 hover:drop-shadow-pink"
+          >
+            <p className="text-xl font-medium">Book</p>
+            <Submit className="h-[22px] w-[22px] stroke-secondary-text stroke-[3]" />
+          </button>
         </div>
 
-        {/* Code for Tab,Laptop  */}
+        {/* Code for Tab and Laptop  */}
         <div className="hidden flex-col items-center md:flex">
           <div className="">
             <IconButtonPrimary title="Morning">

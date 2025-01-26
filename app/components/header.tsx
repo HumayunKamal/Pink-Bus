@@ -57,7 +57,7 @@ const Header = () => {
           <NavigationLinks />
 
           {/* Light mode */}
-          <MdLightMode className="ml-auto h-auto w-[24px] cursor-pointer rounded-full bg-primary-light fill-primary p-2 sm:w-[34px] 2xl:w-[34px]" />
+          <MdLightMode className="ml-auto h-auto w-[24px] cursor-pointer rounded-full bg-primary-light fill-primary p-1 lg:w-[34px] lg:p-2 2xl:w-[34px]" />
         </motion.div>
       </motion.div>
 

@@ -8,20 +8,24 @@ html {
   font:
     normal 400 1rem /1.5 "Gudea",
     serif;
-  color: #000;
+
+  /* color: #000; */
   margin: 0;
   padding: 0;
   box-sizing: content-box;
 
   color-scheme: light dark;
+  color: light-dark(#000, #fff);
   scroll-behavior: smooth;
 
-  /* accent-color: #ffb6c1;
-   */
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+  & :focus {
+    outline: none;
   }
+  /* accent-color: #ffb6c1; */
+
+  /* @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  } */
 }
 
 body {
@@ -50,7 +54,7 @@ body {
     @apply font-secondary text-lg font-bold lg:text-2xl 2xl:text-3xl;
   }
   .sub-title {
-    @apply text-md font-secondary font-bold lg:text-xl;
+    @apply font-secondary text-lg font-bold lg:text-xl;
   }
   .caption {
     @apply font-secondary text-xs;
@@ -94,10 +98,32 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #ffb6c1;
 }
-:focus {
+
+/* Selection of text */
+::selection {
+  background-color: #ffb6c1;
+  color: #fff;
+}
+
+::-webkit-calendar-picker-indicator {
+  border-radius: 4px;
+  background-color: #ffb6c1;
+  cursor: pointer;
+}
+::-webkit-calendar-picker-indicator:focus {
   outline: none;
 }
 
+/* Outline */
+select:focus {
+  outline: solid 1px #ffb6c1;
+  border-radius: 4px;
+}
+:active {
+  outline: none;
+}
+
+/* Radio button */
 input[type="radio"] {
   appearance: none; /* General */
   border: 2px dotted #ffb6c1; /* Add custom styling */
@@ -121,14 +147,10 @@ input[type="radio"]::before {
   margin: 1px;
 }
 
-/* a:focus {
-  outline: none;
+dialog {
+  background-color: #ffb6c1;
+  filter: drop-shadow(0px 1px 2px #ffb6c1);
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
 }
-
-button:focus {
-  outline: none;
-}
-
-input:focus {
-  outline: none;
-} */

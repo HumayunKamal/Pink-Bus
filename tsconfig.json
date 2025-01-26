@@ -17,11 +17,14 @@
     "paths": {
       "~/*": ["./app/*"]
     },
+
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
   }
 }
