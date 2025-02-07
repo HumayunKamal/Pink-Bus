@@ -68,7 +68,7 @@ const Header = () => {
           opacity: opacityReverse,
           transitionDuration: "0.5s",
         }}
-        className="absolute bottom-0 left-1/2 z-10 mb-5 flex hidden h-[50px] w-4/6 !-translate-x-1/2 items-center justify-center rounded-xl bg-primary/60 text-secondary-text backdrop-blur-[3px] sm:h-[55px] sm:w-auto 2xl:h-16 2xl:w-[20%] 2xl:rounded-2xl"
+        className="absolute bottom-0 left-1/2 z-10 mb-5 flex hidden h-[50px] w-4/6 -translate-x-1/2! items-center justify-center rounded-xl bg-primary/60 text-secondary-text backdrop-blur-[3px] sm:h-[55px] sm:w-auto 2xl:h-16 2xl:w-[20%] 2xl:rounded-2xl"
       >
         <motion.div
           initial="initial"
@@ -113,7 +113,7 @@ const NavigationLinks = () => (
           >
             {link.name}
             <hr
-              className={`${isActive && "w-full !border-grey"} group-hover-transition absolute w-0 border-secondary group-hover:w-full sm:mt-1`}
+              className={`${isActive && "w-full border-grey!"} group-hover-transition absolute w-0 border-secondary group-hover:w-full sm:mt-1`}
             />
           </div>
         )}

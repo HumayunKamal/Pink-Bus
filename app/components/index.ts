@@ -1,10 +1,10 @@
-import BookingSection from "./BookingSection";
+import BookingSection from "./bookingSection";
 import { ButtonPrimary, IconButtonPrimary } from "./buttons";
 import Dialog from "./dialog";
 import DropDownInput from "./dropDownInput";
 import Footer from "./footer";
 import Header from "./header";
-import HeroSection from "./HeroSection";
+import HeroSection from "./heroSection";
 import SelectionInput from "./selectionInput";
 export {
   ButtonPrimary,

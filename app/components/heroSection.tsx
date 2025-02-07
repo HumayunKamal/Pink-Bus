@@ -80,7 +80,7 @@ const HeroSection = ({
         >
           <motion.h1
             variants={staggerChild}
-            className="heading bg-gradient-to-r from-primary-text to-secondary-text bg-clip-text text-transparent"
+            className="heading bg-linear-to-r from-primary-text to-secondary-text bg-clip-text text-transparent"
           >
             {heroData.title}
           </motion.h1>

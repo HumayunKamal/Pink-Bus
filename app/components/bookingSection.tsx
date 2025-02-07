@@ -47,7 +47,7 @@ const BookingSection = ({
   return (
     <div
       id="bookingSection"
-      className={`${classes.bookingSection} col-span-full mx-auto bg-secondary-bg p-4 drop-shadow-pink sm:!-translate-y-1/4 sm:p-6 lg:h-[250px] lg:w-[768px] lg:!-translate-y-1/2 lg:p-4`}
+      className={`${classes.bookingSection} col-span-full mx-auto bg-secondary-bg p-4 drop-shadow-pink sm:-translate-y-1/4! sm:p-6 lg:h-[250px] lg:w-[768px] lg:-translate-y-1/2! lg:p-4`}
     >
       {/* Code for Mobile  */}
       <div className="flex flex-col items-center gap-2 py-2 lg:hidden">
@@ -113,7 +113,7 @@ const BookingSection = ({
           className="mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] bg-primary text-secondary-text drop-shadow-pink duration-300 ease-in hover:-translate-y-1 hover:drop-shadow-pink"
         >
           <p className="text-xl font-medium">Book</p>
-          <Submit className="h-[22px] w-[22px] stroke-secondary-text stroke-[3]" />
+          <Submit className="h-[22px] w-[22px] stroke-secondary-text stroke-3" />
         </button>
       </div>
 
