@@ -7,13 +7,26 @@ import {
 import { heroBackground } from "~/assets";
 import { ButtonPrimary } from "~/components";
 import { heroData } from "~/constantData";
+
 const HeroSection = ({
   smoothYProgress,
 }: {
   smoothYProgress: MotionValue<number>;
 }) => {
-  const scrollValue = [0.05, 0.1];
-  const display = useTransform(smoothYProgress, scrollValue, ["none", "block"]);
+  const scrollValue = [0.05, 0.06, 0.07, 0.08, 0.09, 0.1];
+  const display = useTransform(smoothYProgress, scrollValue, [
+    "none",
+    "block",
+    "block",
+    "block",
+    "block",
+    "block",
+  ]);
+  const opacity = useTransform(
+    smoothYProgress,
+    scrollValue,
+    [0.1, 0.3, 0.5, 0.6, 0.8, 1],
+  );
 
   /* Stagger Effects */
   const staggerChildForButton = {
@@ -34,7 +47,7 @@ const HeroSection = ({
       filter: "blur(0px)",
       transition: {
         duration: 0.3,
-        ease: [0.55, 0.085, 0.68, 0.53],
+        // ease: [0.55, 0.085, 0.68, 0.53],
       },
     },
   };
@@ -55,32 +68,34 @@ const HeroSection = ({
       ></video>
 
       {/* overlay */}
-      <div className="absolute inset-0 bg-secondary/50" />
+      <div className="bg-secondary/50 absolute inset-0" />
 
       {/* Hero Section Description */}
       <AnimatePresence>
         <motion.div
-          className="absolute left-[10%] top-[30%] space-y-2 text-secondary-text xl:space-y-3 3xl:space-y-4"
+          className="text-secondary-text 3xl:space-y-4 absolute top-[30%] left-[10%] space-y-2 xl:space-y-3"
           initial="initial"
           whileInView="animate"
+          exit="exit"
           style={{
+            opacity,
             display,
             transitionDuration: "0.3s",
-            transitionTimingFunction: "ease-in",
+            transitionTimingFunction: "ease-out",
           }}
           variants={{
             animate: {
               transition: {
-                duration: 0.3,
-                ease: "easeInOut",
-                staggerChildren: 0.6,
+                // duration: 0.3,
+                ease: "easeOut",
+                staggerChildren: 0.3,
               },
             },
           }}
         >
           <motion.h1
             variants={staggerChild}
-            className="heading bg-linear-to-r from-primary-text to-secondary-text bg-clip-text text-transparent"
+            className="heading from-primary-text to-secondary-text bg-linear-to-r bg-clip-text text-transparent"
           >
             {heroData.title}
           </motion.h1>

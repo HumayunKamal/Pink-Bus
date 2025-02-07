@@ -12,8 +12,7 @@ const Header = () => {
     damping: 30,
     restDelta: 0.001,
   });
-  const scrollValue = [0, 0.002];
-
+  const scrollValue = [0, 0.002]; /* scroll bar range */
   const opacity = useTransform(smoothProgress, scrollValue, [0, 1]);
   const moveY = useTransform(smoothProgress, scrollValue, [-120, 0]);
   const opacityReverse = useTransform(smoothProgress, scrollValue, [1, 0]);
