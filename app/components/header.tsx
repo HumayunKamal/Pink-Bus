@@ -1,9 +1,8 @@
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { MdLightMode } from "react-icons/md";
 import { Link, NavLink } from "react-router";
 import { whiteLogo } from "~/assets";
 import { navLinks } from "~/constantData";
-
+import { LightMode } from "./svgs";
 const Header = () => {
   const { scrollYProgress } = useScroll();
 
@@ -29,7 +28,7 @@ const Header = () => {
           y: moveY,
           transitionDuration: "0.5s",
         }}
-        className="z-10 col-span-full row-start-1 mt-10 flex h-10 items-center justify-center rounded-xl bg-primary/60 text-secondary-text backdrop-blur-[3px] lg:mt-12 lg:h-20 lg:rounded-3xl 2xl:h-24"
+        className="bg-primary/60 text-secondary-text z-10 col-span-full row-start-1 mt-10 flex h-10 items-center justify-center rounded-xl backdrop-blur-[3px] lg:mt-12 lg:h-20 lg:rounded-3xl 2xl:h-24"
       >
         <motion.div
           initial="initial"
@@ -57,7 +56,7 @@ const Header = () => {
           <NavigationLinks />
 
           {/* Light mode */}
-          <MdLightMode className="ml-auto h-auto w-[24px] cursor-pointer rounded-full bg-primary-light fill-primary p-1 lg:w-[34px] lg:p-2 2xl:w-[34px]" />
+          <LightMode className="bg-primary-light fill-primary ml-auto h-auto w-[24px] cursor-pointer rounded-full p-1 lg:w-[34px] lg:p-2 2xl:w-[34px]" />
         </motion.div>
       </motion.div>
 
@@ -68,7 +67,7 @@ const Header = () => {
           opacity: opacityReverse,
           transitionDuration: "0.5s",
         }}
-        className="absolute bottom-0 left-1/2 z-10 mb-5 flex hidden h-[50px] w-4/6 -translate-x-1/2! items-center justify-center rounded-xl bg-primary/60 text-secondary-text backdrop-blur-[3px] sm:h-[55px] sm:w-auto 2xl:h-16 2xl:w-[20%] 2xl:rounded-2xl"
+        className="bg-primary/60 text-secondary-text absolute bottom-0 left-1/2 z-10 mb-5 flex hidden h-[50px] w-4/6 -translate-x-1/2! items-center justify-center rounded-xl backdrop-blur-[3px] sm:h-[55px] sm:w-auto 2xl:h-16 2xl:w-[20%] 2xl:rounded-2xl"
       >
         <motion.div
           initial="initial"
@@ -94,7 +93,7 @@ const Header = () => {
           {/* NavLinks */}
           <NavigationLinks />
 
-          <MdLightMode className="h-auto w-[24px] cursor-pointer rounded-full bg-primary-light fill-primary p-1 2xl:w-[34px]" />
+          <LightMode className="bg-primary-light fill-primary h-auto w-[24px] cursor-pointer rounded-full p-1 2xl:w-[34px]" />
         </motion.div>
       </motion.div>
     </>
@@ -109,11 +108,11 @@ const NavigationLinks = () => (
       <NavLink className="group" key={link.name} to={link.href}>
         {({ isActive }) => (
           <div
-            className={`${isActive && "text-grey"} group-hover-transition relative group-hover:text-secondary 2xl:text-xl`}
+            className={`${isActive && "text-grey"} group-hover-transition group-hover:text-secondary relative 2xl:text-xl`}
           >
             {link.name}
             <hr
-              className={`${isActive && "w-full border-grey!"} group-hover-transition absolute w-0 border-secondary group-hover:w-full sm:mt-1`}
+              className={`${isActive && "border-grey! w-full"} group-hover-transition border-secondary absolute w-0 group-hover:w-full sm:mt-1`}
             />
           </div>
         )}
