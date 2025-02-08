@@ -1,15 +1,11 @@
-![Pink bus][def]
+## Bus Management Prototype
 
-### Bus Management
+This Project is based on girl transport issue,
 
-**problem** This Project is based on girl transport issue,
-
-**solution**: where they can book ride and travel safely.
+Where they can book ride and travel safely.
 
 ### Tech
 
 - React framework (react-router)
 - Tailwind css
 - Motion
-
-[def]: /public/favicon.ico

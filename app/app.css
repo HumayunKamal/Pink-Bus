@@ -52,7 +52,7 @@
 }
 
 html {
-  @apply bg-primary-bg dark:bg-gray-950;
+  @apply bg-primary-bg dark:bg-primary-bg;
 
   font:
     normal 400 1rem /1.5 "Gudea",
@@ -65,6 +65,7 @@ html {
 
   color-scheme: light dark;
   color: light-dark(#000, #fff);
+  /* background-color: light-dark(var(--color-primary-bg), #000); */
   scroll-behavior: smooth;
 
   & :focus {
