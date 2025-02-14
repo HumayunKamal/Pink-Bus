@@ -1,19 +1,36 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Gudea";
+  src: url('/fonts/Gudea-Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Old Standard TT";
+  src: url('/fonts/OldStandardTT-Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Old Standard TT";
+  src: url('/fonts/OldStandardTT-Bold.ttf');
+  font-weight: bold;
+}
+
 @theme {
   --breakpoint-3xl: 1800px;
 
   --color-primary: #ffb6c1;
   --color-secondary: #000;
-  --color-primary-light: #ffe5ec;
-  --color-grey: #9ca3af;
+  --color-primary-light: #ffe5ec --color-grey: #9ca3af;
   --color-primary-text: #ffb6c1;
   --color-secondary-text: #ffffff;
   --color-primary-bg: #e8e8e8;
   --color-secondary-bg: #fff;
 
   --font-primary: "Gudea", sans-serif;
-  --font-secondary: Old Standard TT, serif;
+  --font-secondary: "Old Standard TT", serif;
 
   --drop-shadow-black: 0px 4px 4px rgba(0, 0, 0, 25%),
     0px 1px 1px rgba(0, 0, 0, 6%);
@@ -24,6 +41,7 @@
 }
 
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -31,21 +49,23 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
-}
 
-@layer base {
   .heading {
     @apply font-secondary text-3xl font-bold lg:text-5xl xl:text-6xl;
   }
+
   .sub-heading {
     @apply font-secondary text-xl font-bold lg:text-3xl;
   }
+
   .title {
     @apply font-secondary text-lg font-bold lg:text-2xl 2xl:text-3xl;
   }
+
   .sub-title {
     @apply font-secondary text-lg font-bold lg:text-xl;
   }
+
   .caption {
     @apply font-secondary text-xs;
   }
@@ -54,9 +74,7 @@
 html {
   @apply bg-primary-bg dark:bg-primary-bg;
 
-  font:
-    normal 400 1rem /1.5 "Gudea",
-    serif;
+  font: normal 400 1rem /1.5 "Gudea";
 
   /* color: #000; */
   margin: 0;
@@ -71,6 +89,7 @@ html {
   & :focus {
     outline: none;
   }
+
   /* accent-color: #ffb6c1; */
 
   /* @media (prefers-color-scheme: dark) {
@@ -138,6 +157,7 @@ body {
   background-color: #ffb6c1;
   cursor: pointer;
 }
+
 ::-webkit-calendar-picker-indicator:focus {
   outline: none;
 }
@@ -147,15 +167,19 @@ select:focus {
   outline: solid 1px #ffb6c1;
   border-radius: 4px;
 }
+
 :active {
   outline: none;
 }
 
 /* Radio button */
 input[type="radio"] {
-  appearance: none; /* General */
-  border: 2px dotted #ffb6c1; /* Add custom styling */
-  border-radius: 50%; /* Make it circular */
+  appearance: none;
+  /* General */
+  border: 2px dotted #ffb6c1;
+  /* Add custom styling */
+  border-radius: 50%;
+  /* Make it circular */
   width: 16px;
   height: 16px;
 }

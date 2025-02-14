@@ -4,10 +4,9 @@ import {
   MotionValue,
   useTransform,
 } from "motion/react";
-// import { heroBackground } from "~/assets";
+import { heroBackground } from "~/assets";
 import { ButtonPrimary } from "~/components";
 import { heroData } from "~/constantData";
-import heroBackground from "app/assets/heroBackground.mp4";
 
 const HeroSection = ({
   smoothYProgress,
@@ -44,20 +43,16 @@ const HeroSection = ({
   };
 
   return (
-    <div className="col-span-full row-start-1 -mx-[2rem] h-dvh sm:-mx-[7.5rem]">
+    <div className="col-span-full row-start-1 -mx-[2rem] h-svh sm:-mx-[7.5rem]">
       <video
-        ref={(video) => {
-          if (video) {
-            video.playbackRate = 0.7; // Set playback rate directly
-          }
-        }}
         src={heroBackground}
         className="absolute h-full w-full object-cover object-center"
         autoPlay
         muted
-        // controls
-        // loop
+      // controls
+      // loop
       ></video>
+
 
       {/* overlay */}
       <div className="bg-secondary/50 absolute inset-0" />

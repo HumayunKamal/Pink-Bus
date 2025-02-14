@@ -1,8 +1,6 @@
 ## Bus Management Prototype
 
-This Project is based on girl transport issue,
-
-Where they can book ride and travel safely.
+Prototype to solve girls transport problems, book ride and travel safely.
 
 ### Tech
 

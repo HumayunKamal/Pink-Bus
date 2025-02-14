@@ -14,16 +14,16 @@ import { Footer, Header } from "./components";
 import { TwSizeIndicator } from "./utils";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Gudea:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap",
-  },
+  // { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  // {
+  //   rel: "preconnect",
+  //   href: "https://fonts.gstatic.com",
+  //   crossOrigin: "anonymous",
+  // },
+  // {
+  //   rel: "stylesheet",
+  //   href: "https://fonts.googleapis.com/css2?family=Gudea&family=Old+Standard+TT:wght@700&display=swap"
+  // },
   { rel: "stylesheet", href: stylesheet },
 ];
 
