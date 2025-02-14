@@ -7,10 +7,9 @@ import {
 } from "~/components";
 import { AfternoonSun, MorningSvg, Submit } from "~/components/svgs";
 
+import type { MotionValue } from "motion/react";
 import { City } from "~/constantData";
 import { getDefaultMaxDate } from "~/utils";
-import classes from "./bookingSection.module.css";
-import type { MotionValue } from "motion/react";
 
 const BookingSection = ({
   smoothYProgress,
@@ -47,7 +46,8 @@ const BookingSection = ({
   return (
     <div
       id="bookingSection"
-      className={`${classes.bookingSection} col-span-full mx-auto bg-secondary-bg p-4 drop-shadow-pink sm:-translate-y-1/4! sm:p-6 lg:h-[250px] lg:w-[768px] lg:-translate-y-1/2! lg:p-4`}
+      className="min-w-[260px] max-w-[800px] rounded-[20px] translate-y-[-20%] sm:max-lg:min-w-[360px] col-span-full mx-auto bg-secondary-bg p-4 drop-shadow-pink sm:-translate-y-1/4! sm:p-6 lg:h-[250px] lg:w-[768px] lg:-translate-y-1/2! lg:p-4 bookingSectionBg"
+
     >
       {/* Code for Mobile  */}
       <div className="flex flex-col items-center gap-2 py-2 lg:hidden">

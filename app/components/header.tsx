@@ -38,7 +38,7 @@ const Header = () => {
             animate: {
               opacity: 1,
               y: 0,
-              transition: { delay: 0.2, duration: 0.4 },
+              transition: { duration: 0.4 },
             },
           }}
         >
@@ -76,7 +76,7 @@ const Header = () => {
             animate: {
               opacity: 1,
               y: 0,
-              transition: { delay: 0.2, duration: 0.4 },
+              transition: { duration: 0.4 },
             },
           }}
           className="flex w-full items-center justify-around sm:mx-2 sm:gap-2 lg:space-x-4"
