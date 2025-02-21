@@ -25,6 +25,7 @@ export const links: Route.LinksFunction = () => [
   //   href: "https://fonts.googleapis.com/css2?family=Gudea&family=Old+Standard+TT:wght@700&display=swap"
   // },
   { rel: "stylesheet", href: stylesheet },
+  { rel: "manifest", href: "/site.webmanifest" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -33,7 +34,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* <link rel="stylesheet" href={stylesheet} /> */}
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
+        <meta name="theme-color" content="#ffb6c1" />
         <Meta />
         <Links />
       </head>
@@ -89,4 +91,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       )}
     </main>
   );
+}
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch((err) => {
+      console.error("Service Worker registration failed:", err);
+    });
+  });
 }

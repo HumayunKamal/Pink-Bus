@@ -1,0 +1,37 @@
+{
+  "name": "Pink Bus",
+  "short_name": "Pink Bus",
+  "icons": [
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#9ca3af",
+  "theme_color": "#ffb6c1",
+  "description": "Prototype to solve girls transport problems, book ride and travel safely.",
+
+  "screenshots": [
+    {
+      "src": "/pwa_mobile_screenshot.jpg",
+      "sizes": "323x545",
+      "type": "image/jpg"
+    },
+    {
+      "form_factor": "wide",
+      "src": "/pwa_desktop_screenshot.jpg",
+      "sizes": "1365x767",
+      "type": "image/jpg"
+    }
+  ]
+}
