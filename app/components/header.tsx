@@ -104,7 +104,7 @@ export default Header;
 const NavigationLinks = () => (
   <nav className="flex space-x-4">
     {navLinks.map((link) => (
-      <NavLink className="group" key={link.name} to={link.href}>
+      <NavLink className="group" key={link.name} to={link.href} viewTransition>
         {({ isActive }) => (
           <div
             className={`${isActive && "text-grey"} group-hover-transition group-hover:text-secondary relative 2xl:text-xl`}
