@@ -50,9 +50,6 @@ const HeroSection = ({
         autoPlay
         muted
         loop
-        onLoadedMetadata={(e) =>
-          ((e.target as HTMLVideoElement).playbackRate = 0.7)
-        } // Adjust speed here
       ></video>
 
       {/* overlay */}
