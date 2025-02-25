@@ -6,6 +6,7 @@ import Footer from "./footer";
 import Header from "./header";
 import HeroSection from "./heroSection";
 import SelectionInput from "./selectionInput";
+import CitySelectionInput from "./citySelectionInput";
 export {
   ButtonPrimary,
   Footer,
@@ -16,4 +17,5 @@ export {
   Dialog,
   BookingSection,
   HeroSection,
+  CitySelectionInput,
 };

@@ -116,6 +116,10 @@ body {
   @apply bg-primary text-secondary-text shadow-pink cursor-pointer font-normal;
 }
 
+.buttonOutline {
+  @apply text-primary-text bg-transparent border border-primary shadow-pink cursor-pointer font-normal;
+}
+
 .button-effect-1 {
   @apply duration-300 ease-out hover:-translate-y-[3px] hover:scale-[1.03];
 }
@@ -202,8 +206,8 @@ input[type="radio"]::before {
 /* Dialog */
 dialog {
   background-color: #ffb6c1;
-  box-shadow: var(--shadow-pink);
+  box-shadow: var(--shadow-pink), var(--shadow-pink);
   color: #fff;
-  padding: 15px;
+  padding: 10px 20px;
   border-radius: 10px;
 }

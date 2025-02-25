@@ -25,7 +25,8 @@ const Header = () => {
         style={{
           opacity,
           y: moveY,
-          transitionDuration: "0.5s",
+          transitionDuration: "0.3s",
+          transitionBehavior: "ease-out",
         }}
         className="bg-primary/60 text-secondary-text z-10 col-span-full row-start-1 mt-10 flex h-10 items-center justify-center rounded-xl backdrop-blur-[3px] lg:mt-12 lg:h-20 lg:rounded-3xl 2xl:h-24"
       >
@@ -64,9 +65,10 @@ const Header = () => {
         style={{
           y: moveYReverse,
           opacity: opacityReverse,
-          transitionDuration: "0.5s",
+          transitionDuration: "0.3s",
+          transitionBehavior: "ease-out",
         }}
-        className="bg-primary/60 text-secondary-text absolute bottom-0 left-1/2 z-10 mb-5 flex hidden h-[50px] w-4/6 -translate-x-1/2! items-center justify-center rounded-xl backdrop-blur-[3px] sm:h-[55px] sm:w-auto 2xl:h-16 2xl:w-[20%] 2xl:rounded-2xl"
+        className="bg-primary/60 text-secondary-text absolute bottom-0 left-1/2 z-10 mb-5 flex h-[50px] w-4/6 -translate-x-1/2! items-center justify-center rounded-xl backdrop-blur-[3px] sm:h-[55px] sm:w-auto 2xl:h-16 2xl:w-[20%] 2xl:rounded-2xl"
       >
         <motion.div
           initial="initial"

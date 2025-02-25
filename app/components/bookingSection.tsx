@@ -1,38 +1,44 @@
 import { useState } from "react";
 import {
+  CitySelectionInput,
   Dialog,
   DropDownInput,
   IconButtonPrimary,
   SelectionInput,
 } from "~/components";
-import { AfternoonSun, MorningSvg, Submit } from "~/components/svgs";
+import { BusStop, Calender, Location, Submit, SunSvg } from "~/components/svgs";
 
-import type { MotionValue } from "motion/react";
+import { motion, useTransform, type MotionValue } from "motion/react";
 import { City } from "~/constantData";
-import { getDefaultMaxDate } from "~/utils";
+import { getMonthMaxDate } from "~/utils";
 
 const BookingSection = ({
   smoothYProgress,
 }: {
   smoothYProgress: MotionValue<number>;
 }) => {
-  const scrollValue = [0.05, 0.1];
-
+  // States
   const [selectedTime, setSelectedTime] = useState<"morning" | "afternoon">(
     "morning",
   );
   const [selectedCityFrom, setSelectedCityFrom] = useState<City>(City.Chakwal);
   const [selectedCityTo, setSelectedCityTo] = useState<City>(City.Faizabad);
   const cityOptions = Object.values(City);
-  const [journeyDate, setJourneyDate] = useState<string>(
-    new Date().toISOString().split("T")[0],
-  );
-
+  const todayDay = new Date().toISOString().split("T")[0];
+  const [journeyDate, setJourneyDate] = useState<string>(todayDay);
+  const maxJourneyDate = getMonthMaxDate(1);
   const [error, setError] = useState("");
 
-  const maxJourneyDate = getDefaultMaxDate();
+  // Animations
+  const scrollValue = [0.3, 0.32];
+  const opacity = useTransform(smoothYProgress, scrollValue, [0, 1]);
+  const moveY = useTransform(smoothYProgress, scrollValue, [100, 0]);
 
+  // Handlers
   const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    // Later I will move error to global state...
     if (selectedCityFrom === selectedCityTo) {
       setError("Both cities can't be same");
       const timeoutId = setTimeout(() => {
@@ -40,14 +46,30 @@ const BookingSection = ({
       }, 2000);
       return () => clearTimeout(timeoutId);
     }
+
+    if (journeyDate < todayDay || journeyDate > maxJourneyDate) {
+      setError(
+        "Date should be between today and next 30 days or use the calender icon.",
+      );
+      const timeoutId = setTimeout(() => {
+        setError("");
+      }, 2000);
+      return () => clearTimeout(timeoutId);
+    }
+
     console.log(selectedCityFrom, selectedCityTo, journeyDate, selectedTime);
   };
 
   return (
-    <div
+    <motion.div
       id="bookingSection"
-      className="min-w-[260px] max-w-[800px] rounded-[20px] translate-y-[-20%] sm:max-lg:min-w-[360px] col-span-full mx-auto bg-secondary-bg p-4 shadow-pink sm:-translate-y-1/4! sm:p-6 lg:h-[250px] lg:w-[768px] lg:-translate-y-1/2! lg:p-4 bookingSectionBg"
-
+      className="bg-secondary-bg bookingSectionBg z-10 col-span-full mx-auto max-w-[800px] min-w-[260px] translate-y-[-20%] rounded-[20px] p-4 shadow-white sm:-translate-y-1/4! sm:p-6 sm:max-lg:min-w-[360px] lg:h-[250px] lg:w-[754px] lg:-translate-y-1/2! lg:p-4"
+      style={{
+        opacity,
+        y: moveY,
+        transitionDuration: "300ms",
+        transitionBehavior: "ease-out",
+      }}
     >
       {/* Code for Mobile  */}
       <div className="flex flex-col items-center gap-2 py-2 lg:hidden">
@@ -70,7 +92,7 @@ const BookingSection = ({
         </div>
 
         {/* Selection Inputs */}
-        <div className="h-auto w-full space-y-2 rounded-xl border-[0.1px] border-primary px-2 py-4">
+        <div className="border-primary h-auto w-full space-y-2 rounded-xl border-[0.1px] px-2 py-4">
           {/* Selection: City from */}
           <DropDownInput
             selectedValue={selectedCityFrom}
@@ -88,14 +110,14 @@ const BookingSection = ({
           />
 
           {/* Selction : Date */}
-          <div className="flex cursor-pointer justify-between text-primary">
+          <div className="text-primary flex cursor-pointer justify-between">
             <label htmlFor="journeyDate">Journey Date</label>
             <input
               type="date"
               id="journeyDate"
-              min={journeyDate}
-              max={maxJourneyDate}
               value={journeyDate}
+              min={todayDay}
+              max={maxJourneyDate}
               onChange={(e) => setJourneyDate(e.target.value)}
               className="w-[55%] cursor-pointer"
               required
@@ -103,39 +125,103 @@ const BookingSection = ({
           </div>
         </div>
 
-        <Dialog error={error} />
-
         {/* Submit Button */}
         <button
           type="submit"
           onClick={submitHandler}
           disabled={Boolean(error)}
-          className="mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] bg-primary text-secondary-text shadow-pink duration-300 ease-in hover:-translate-y-1"
+          className="bg-primary text-secondary-text shadow-pink mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] duration-300 ease-in hover:-translate-y-1"
         >
           <p className="text-xl font-medium">Book</p>
-          <Submit className="h-[22px] w-[22px] stroke-secondary-text stroke-3" />
+          <Submit className="stroke-secondary-text h-[22px] w-[22px] stroke-3" />
         </button>
       </div>
 
       {/* Code for Tab and Laptop  */}
-      <div className="hidden flex-col items-center lg:flex">
-        <div className="">
-          <IconButtonPrimary title="Morning">
-            <MorningSvg className="h-[22px] w-[22px] stroke-secondary-text" />
+      <div className="mt-1 hidden flex-col lg:flex">
+        <div className="ml-1 flex gap-5">
+          <IconButtonPrimary
+            title="Morning"
+            isActive={selectedTime === "morning"}
+            onClick={() => setSelectedTime("morning")}
+          >
+            <SunSvg
+              className={`${selectedTime === "morning" ? "stroke-secondary-text" : "stroke-primary-text"} h-[22px] w-[22px] duration-200 ease-linear`}
+            />
           </IconButtonPrimary>
-          <IconButtonPrimary title="Morning">
-            <AfternoonSun className="h-[22px] w-[22px] stroke-secondary-text" />
+          <IconButtonPrimary
+            title="Afternoon"
+            isActive={selectedTime === "afternoon"}
+            onClick={() => setSelectedTime("afternoon")}
+          >
+            <SunSvg
+              className={`${selectedTime === "afternoon" ? "stroke-secondary-text" : "stroke-primary-text"} h-[22px] w-[22px] rotate-90 duration-200 ease-linear`}
+            />
           </IconButtonPrimary>
         </div>
 
-        <div className=" ">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          sunt soluta, deleniti architecto animi, iste quis voluptas qui aliquid
-          ipsum explicabo modi eum nobis ea tenetur eos similique autem
-          doloribus?
+        <div className="ml-1 flex">
+          {/* Cities and Date */}
+          <div className="border-primary mt-[48px] flex w-fit gap-10 rounded-2xl border px-[20px] py-5">
+            {/* City from */}
+            <CitySelectionInput
+              SvgIcon={<Location />}
+              cityOptions={cityOptions}
+              description="From City"
+              label="From"
+              selectedCity={selectedCityFrom}
+              setSelectedCity={setSelectedCityFrom}
+            />
+
+            {/* City to */}
+            <CitySelectionInput
+              SvgIcon={<BusStop />}
+              cityOptions={cityOptions}
+              description="To City"
+              label="To"
+              selectedCity={selectedCityTo}
+              setSelectedCity={setSelectedCityTo}
+            />
+
+            {/* Selction : Date */}
+            <div className="flex gap-2">
+              <div className="bg-primary flex h-[38px] w-[38px] items-center justify-center rounded-full fill-white">
+                <Calender />
+              </div>
+              <div>
+                <p className="text-grey text-[12px]">Journey Date</p>
+                <input
+                  type="date"
+                  id="journeyDate"
+                  min={todayDay}
+                  max={maxJourneyDate}
+                  value={journeyDate}
+                  onChange={(e) => setJourneyDate(e.target.value)}
+                  className="text-primary cursor-pointer"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            onClick={submitHandler}
+            disabled={Boolean(error)}
+            className="bg-primary hover:shadow-pink mx-auto mt-[48px] w-[80px] cursor-pointer place-items-center rounded-[15px] duration-300 ease-out hover:scale-102"
+          >
+            <Submit className="stroke-secondary-text h-[48px] w-[48px] stroke-3" />
+          </button>
         </div>
       </div>
-    </div>
+
+      {/* Dialog for Error */}
+      <Dialog
+        error={error}
+        className="absolute top-1/2 left-1/2 w-fit -translate-x-1/2 -translate-y-1/2"
+      />
+    </motion.div>
   );
 };
 export default BookingSection;

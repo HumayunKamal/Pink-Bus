@@ -4,8 +4,9 @@ interface DropDownInputProps<T extends string | number> {
   selectedValue: T;
   setSelectedValue: (value: T) => void;
   options: T[];
-  label: string;
+  label?: string;
   className?: string;
+  selectClassName?: string;
   disabled?: boolean;
 }
 
@@ -15,18 +16,19 @@ const DropDownInput = <T extends string | number>({
   options,
   label,
   className = "",
+  selectClassName = "",
   disabled = false,
 }: DropDownInputProps<T>) => {
   const labelId = useId();
   return (
-    <div className={`flex flex-row justify-between text-primary ${className}`}>
-      <label htmlFor={labelId}>{label}:</label>
+    <div className={`text-primary flex flex-row justify-between ${className}`}>
+      {label && <label htmlFor={labelId}>{label} :</label>}
       <select
         id={labelId}
         value={selectedValue}
         onChange={(e) => setSelectedValue(e.target.value as T)}
         disabled={disabled}
-        className="cursor-pointer"
+        className={`cursor-pointer ${selectClassName}`}
         required
       >
         {options.map((option) => (

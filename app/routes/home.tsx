@@ -26,6 +26,7 @@ export default function Home() {
 
       {/* Booking Section */}
       <BookingSection smoothYProgress={smoothYProgress} />
+      
     </>
   );
 }
