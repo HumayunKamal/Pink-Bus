@@ -46,7 +46,7 @@ const BookingSection = ({
   return (
     <div
       id="bookingSection"
-      className="min-w-[260px] max-w-[800px] rounded-[20px] translate-y-[-20%] sm:max-lg:min-w-[360px] col-span-full mx-auto bg-secondary-bg p-4 drop-shadow-pink sm:-translate-y-1/4! sm:p-6 lg:h-[250px] lg:w-[768px] lg:-translate-y-1/2! lg:p-4 bookingSectionBg"
+      className="min-w-[260px] max-w-[800px] rounded-[20px] translate-y-[-20%] sm:max-lg:min-w-[360px] col-span-full mx-auto bg-secondary-bg p-4 shadow-pink sm:-translate-y-1/4! sm:p-6 lg:h-[250px] lg:w-[768px] lg:-translate-y-1/2! lg:p-4 bookingSectionBg"
 
     >
       {/* Code for Mobile  */}
@@ -110,7 +110,7 @@ const BookingSection = ({
           type="submit"
           onClick={submitHandler}
           disabled={Boolean(error)}
-          className="mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] bg-primary text-secondary-text drop-shadow-pink duration-300 ease-in hover:-translate-y-1 hover:drop-shadow-pink"
+          className="mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] bg-primary text-secondary-text shadow-pink duration-300 ease-in hover:-translate-y-1"
         >
           <p className="text-xl font-medium">Book</p>
           <Submit className="h-[22px] w-[22px] stroke-secondary-text stroke-3" />

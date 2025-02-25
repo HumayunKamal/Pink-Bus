@@ -60,7 +60,7 @@ const HeroSection = ({
       {/* Hero Section Description */}
       <AnimatePresence>
         <motion.div
-          className="text-secondary-text 3xl:space-y-4 absolute top-[30%] left-[10%] space-y-2 xl:space-y-3"
+          className="text-secondary-text 3xl:space-y-4 absolute top-[30%] left-[10%] sm:max-lg:left-[18%]  space-y-2 xl:space-y-3"
           initial="initial"
           whileInView="animate"
           // It will display:block or none based on scrollbar
