@@ -1,4 +1,3 @@
-import { useScroll, useSpring } from "motion/react";
 import { BookingSection, BusDetailSection, HeroSection } from "~/components";
 import type { Route } from "./+types/home";
 
@@ -10,19 +9,10 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
-
-  /* Spring for smooth scrolling */
-  const smoothYProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
   return (
     <>
       {/* Hero Section */}
-      <HeroSection smoothYProgress={smoothYProgress} />
+      <HeroSection />
       {/* Booking Section */}
       <BookingSection />
       {/* Buses Detail Section */}

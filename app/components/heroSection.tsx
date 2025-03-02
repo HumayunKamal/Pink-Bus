@@ -1,22 +1,9 @@
-import {
-  AnimatePresence,
-  motion,
-  MotionValue,
-  useTransform,
-} from "motion/react";
-import { heroBackground } from "~/assets";
+import { AnimatePresence, motion } from "motion/react";
+import { heroBackground, heroBanner } from "~/assets";
 import { ButtonPrimary } from "~/components";
 import { heroData } from "~/constantData";
 
-const HeroSection = ({
-  smoothYProgress,
-}: {
-  smoothYProgress: MotionValue<number>;
-}) => {
-  const scrollValue = [0, 0.002];
-  const display = useTransform(smoothYProgress, scrollValue, ["none", "block"]);
-  const opacity = useTransform(smoothYProgress, scrollValue, [0.1, 1]);
-
+const HeroSection = ({}) => {
   /* Stagger Effects */
   const staggerChild = {
     initial: { opacity: 0, y: 10, filter: "blur(2px)" },
@@ -44,13 +31,26 @@ const HeroSection = ({
 
   return (
     <div className="col-span-full row-start-1 -mx-[2rem] h-svh sm:-mx-[7.5rem]">
+      {/* For Desktop */}
       <video
-        src={heroBackground}
-        className="absolute h-full w-full object-cover object-center"
+        className="absolute hidden h-full w-full object-cover object-center lg:block"
         autoPlay
         muted
         // loop
-      ></video>
+      >
+        <source
+          src={heroBackground}
+          type="video/mp4"
+          media="(min-width: 1024px)" /* only load on above this viewport */
+        />
+      </video>
+
+      {/* For Mobile */}
+      <img
+        src={heroBanner}
+        alt="Hero Banner"
+        className="absolute h-full w-full object-cover object-center lg:hidden"
+      />
 
       {/* overlay */}
       <div className="bg-secondary/50 absolute inset-0" />
@@ -60,13 +60,7 @@ const HeroSection = ({
         <motion.div
           className="text-secondary-text 3xl:space-y-4 absolute top-[30%] left-[10%] space-y-2 sm:max-lg:left-[18%] xl:space-y-3"
           initial="initial"
-          whileInView="animate"
-          // It will display:block or none based on scrollbar
-          // Once element will be block then it will apply stagger effects using whileInView.
-          style={{
-            display,
-            opacity,
-          }}
+          animate="animate"
           variants={{
             animate: {
               transition: {
