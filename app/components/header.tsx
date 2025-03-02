@@ -15,8 +15,6 @@ const Header = () => {
   const scrollValue = [0, 0.002]; /* scroll bar range */
   const opacity = useTransform(smoothProgress, scrollValue, [0, 1]);
   const moveY = useTransform(smoothProgress, scrollValue, [-120, 0]);
-  const opacityReverse = useTransform(smoothProgress, scrollValue, [1, 0]);
-  const moveYReverse = useTransform(smoothProgress, scrollValue, [0, 120]);
 
   return (
     <>
@@ -57,44 +55,6 @@ const Header = () => {
 
           {/* Light mode */}
           <LightMode className="bg-primary-light fill-primary ml-auto h-auto w-[24px] cursor-pointer rounded-full p-1 lg:w-[34px] lg:p-2 2xl:w-[34px]" />
-        </motion.div>
-      </motion.div>
-
-      {/* Bottom Header */}
-      <motion.div
-        style={{
-          y: moveYReverse,
-          opacity: opacityReverse,
-          transitionDuration: "0.3s",
-          transitionBehavior: "ease-out",
-        }}
-        className="bg-primary/60 text-secondary-text absolute bottom-0 left-1/2 z-10 mb-5 flex h-[50px] w-4/6 -translate-x-1/2! items-center justify-center rounded-xl backdrop-blur-[3px] sm:h-[55px] sm:w-auto 2xl:h-16 2xl:w-[20%] 2xl:rounded-2xl"
-      >
-        <motion.div
-          initial="initial"
-          whileInView="animate"
-          variants={{
-            initial: { opacity: 0, y: 10 },
-            animate: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.4 },
-            },
-          }}
-          className="flex w-full items-center justify-around sm:mx-2 sm:gap-2 lg:space-x-4"
-        >
-          <Link to="/">
-            <img
-              src={whiteLogo}
-              className="h-auto w-[40px] 2xl:w-[50px]"
-              alt="Logo"
-            />
-          </Link>
-
-          {/* NavLinks */}
-          <NavigationLinks />
-
-          <LightMode className="bg-primary-light fill-primary h-auto w-[24px] cursor-pointer rounded-full p-1 2xl:w-[34px]" />
         </motion.div>
       </motion.div>
     </>

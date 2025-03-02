@@ -49,7 +49,7 @@ const HeroSection = ({
         className="absolute h-full w-full object-cover object-center"
         autoPlay
         muted
-        loop
+        // loop
       ></video>
 
       {/* overlay */}

@@ -8,15 +8,11 @@ import {
 } from "~/components";
 import { BusStop, Calender, Location, Submit, SunSvg } from "~/components/svgs";
 
-import { motion, useTransform, type MotionValue } from "motion/react";
+import { motion } from "motion/react";
 import { City } from "~/constantData";
 import { getMonthMaxDate } from "~/utils";
 
-const BookingSection = ({
-  smoothYProgress,
-}: {
-  smoothYProgress: MotionValue<number>;
-}) => {
+const BookingSection = ({}) => {
   // States
   const [selectedTime, setSelectedTime] = useState<"morning" | "afternoon">(
     "morning",
@@ -28,11 +24,6 @@ const BookingSection = ({
   const [journeyDate, setJourneyDate] = useState<string>(todayDay);
   const maxJourneyDate = getMonthMaxDate(1);
   const [error, setError] = useState("");
-
-  // Animations
-  const scrollValue = [0.3, 0.32];
-  const opacity = useTransform(smoothYProgress, scrollValue, [0, 1]);
-  const moveY = useTransform(smoothYProgress, scrollValue, [100, 0]);
 
   // Handlers
   const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -63,12 +54,20 @@ const BookingSection = ({
   return (
     <motion.div
       id="bookingSection"
-      className="bg-secondary-bg bookingSectionBg z-10 col-span-full mx-auto max-w-[800px] min-w-[260px] translate-y-[-20%] rounded-[20px] p-4 shadow-white sm:-translate-y-1/4! sm:p-6 sm:max-lg:min-w-[360px] lg:h-[250px] lg:w-[754px] lg:-translate-y-1/2! lg:p-4"
-      style={{
-        opacity,
-        y: moveY,
-        transitionDuration: "300ms",
-        transitionBehavior: "ease-out",
+      className="bg-secondary-bg bookingSectionBg z-10 col-span-full mx-auto max-w-[800px] translate-y-[-20%] rounded-[20px] p-4 shadow-white sm:-translate-y-1/4! sm:p-6 sm:max-lg:min-w-[360px] lg:h-[250px] lg:w-[754px] lg:-translate-y-1/2! lg:p-4"
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: false, amount: 0.5 }}
+      variants={{
+        initial: {
+          y: 20,
+          opacity: 0,
+        },
+        animate: {
+          y: 0,
+          opacity: 1,
+          transition: { duration: 0.3, ease: "easeOut" },
+        },
       }}
     >
       {/* Code for Mobile  */}
@@ -130,7 +129,7 @@ const BookingSection = ({
           type="submit"
           onClick={submitHandler}
           disabled={Boolean(error)}
-          className="bg-primary text-secondary-text shadow-pink mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] duration-300 ease-in hover:-translate-y-1"
+          className="bg-primary text-secondary-text shadow-pink mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] duration-300 ease-in hover:-translate-y-[2px]"
         >
           <p className="text-xl font-medium">Book</p>
           <Submit className="stroke-secondary-text h-[22px] w-[22px] stroke-3" />

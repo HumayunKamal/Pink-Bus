@@ -7,6 +7,8 @@ import Header from "./header";
 import HeroSection from "./heroSection";
 import SelectionInput from "./selectionInput";
 import CitySelectionInput from "./citySelectionInput";
+import BusDetailSection from "./busDetailSection";
+
 export {
   ButtonPrimary,
   Footer,
@@ -18,4 +20,5 @@ export {
   BookingSection,
   HeroSection,
   CitySelectionInput,
+  BusDetailSection
 };

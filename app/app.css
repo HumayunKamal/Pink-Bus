@@ -33,11 +33,11 @@
   --font-primary: "Gudea", sans-serif;
   --font-secondary: "Old Standard TT", serif;
 
-  --shadow-black: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.06);
-  --shadow-pink: 1px 1px 2px 0px rgba(255, 182, 193, 0.1),
+  --shadow-black: 0px 1px 2px 0px rgba(0, 0, 0, 0.1),
+    1px 1px 1px 0px rgba(0, 0, 0, 0.06);
+  --shadow-pink: 0px 1px 2px 0px rgba(255, 182, 193, 0.1),
     1px 1px 1px 0px rgba(255, 182, 193, 0.06);
-  --shadow-white: 1px 1px 2px 0px rgba(242, 242, 242, 0.1),
+  --shadow-white: 0px 1px 2px 0px rgba(242, 242, 242, 0.1),
     1px 1px 1px 0px rgba(242, 242, 242, 0.06);
 
 }
@@ -53,7 +53,7 @@
   }
 
   .heading {
-    @apply font-secondary text-3xl font-bold lg:text-5xl xl:text-6xl;
+    @apply font-secondary text-4xl font-bold lg:text-5xl xl:text-6xl;
   }
 
   .sub-heading {
@@ -126,28 +126,6 @@ body {
 
 .group-hover-transition {
   @apply duration-500 ease-in-out;
-}
-
-/* ScrollBar Functionality */
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #ffe5ec;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  /* Primary color */
-  background: #9ca3af;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #ffb6c1;
 }
 
 /* Selection of text */
