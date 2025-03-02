@@ -6,24 +6,12 @@ import { heroData } from "~/constantData";
 const HeroSection = ({}) => {
   /* Stagger Effects */
   const staggerChild = {
-    initial: { opacity: 0, y: 10, filter: "blur(2px)" },
+    initial: { opacity: 0, y: 10 },
     animate: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const staggerChildForButton = {
-    initial: { y: 10, opacity: 0 },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
+        duration: 0.2,
         ease: "easeOut",
       },
     },
@@ -60,7 +48,7 @@ const HeroSection = ({}) => {
         <motion.div
           className="text-secondary-text 3xl:space-y-4 absolute top-[30%] left-[10%] space-y-2 sm:max-lg:left-[18%] xl:space-y-3"
           initial="initial"
-          animate="animate"
+          whileInView="animate"
           variants={{
             animate: {
               transition: {
@@ -84,10 +72,7 @@ const HeroSection = ({}) => {
             {heroData.description}
           </motion.p>
 
-          <motion.div
-            className="ml-1 pt-6 2xl:pt-10"
-            variants={staggerChildForButton}
-          >
+          <motion.div className="ml-1 pt-6 2xl:pt-10" variants={staggerChild}>
             <ButtonPrimary title="Book Now" to="#bookingSection" />
           </motion.div>
         </motion.div>
