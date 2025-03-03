@@ -8,7 +8,7 @@ import HeroSection from "./heroSection";
 import SelectionInput from "./selectionInput";
 import CitySelectionInput from "./citySelectionInput";
 import BusDetailSection from "./busDetailSection";
-
+import Accordion from "./accordion";
 export {
   ButtonPrimary,
   Footer,
@@ -20,5 +20,6 @@ export {
   BookingSection,
   HeroSection,
   CitySelectionInput,
-  BusDetailSection
+  BusDetailSection,
+  Accordion
 };

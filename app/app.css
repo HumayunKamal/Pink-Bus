@@ -234,3 +234,17 @@ dialog {
   padding: 10px 20px;
   border-radius: 10px;
 }
+
+
+@supports selector(::details-content) {
+  ::details-content {
+    content-visibility: visible;
+    transition: height 300ms ease-out;
+    overflow: clip;
+    height: 0px;
+  }
+
+  [open]::details-content {
+    height: calc-size(auto, size);  
+  }
+}

@@ -1,4 +1,9 @@
-import { BookingSection, BusDetailSection, HeroSection } from "~/components";
+import {
+  Accordion,
+  BookingSection,
+  BusDetailSection,
+  HeroSection,
+} from "~/components";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -17,6 +22,8 @@ export default function Home() {
       <BookingSection />
       {/* Buses Detail Section */}
       <BusDetailSection />
+      {/* Accordion */}
+      <Accordion />
     </>
   );
 }
