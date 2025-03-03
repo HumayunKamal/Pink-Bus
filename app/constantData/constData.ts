@@ -1,7 +1,9 @@
 const heroData = {
   title: "Pink Bus",
+  subTitle: "Safe and Secure",
+
   description:
-    "Transport for girls. Bus service where girl can book ride and travel safely without wasting time.",
+    "Service, where girls can easily book ride and travel safely.",
 };
 
 const cities = [

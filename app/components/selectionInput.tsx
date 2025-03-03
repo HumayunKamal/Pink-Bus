@@ -20,7 +20,7 @@ const SelectionInput = <T extends string | number | boolean>({
   const IsSelected = selectedValue === value;
   return (
     <label
-      className={`${IsSelected ? "text-primary" : "cursor-pointer text-primary/80"} hover:text-primary ${labelClassName}`}
+      className={`${IsSelected ? "text-primary" : "text-primary/80 cursor-pointer"} hover:text-primary ${labelClassName}`}
     >
       <input
         className={`mr-1 ${className}`}
@@ -31,7 +31,7 @@ const SelectionInput = <T extends string | number | boolean>({
         onChange={(e) => onChange(value)}
         required
       />
-      <span className="text-[20px]">{labelText}</span>
+      <span className="text-[18px]">{labelText}</span>
     </label>
   );
 };

@@ -72,7 +72,7 @@ const BookingSection = ({}) => {
     >
       {/* Code for Mobile  */}
       <div className="flex flex-col items-center gap-2 py-2 lg:hidden">
-        {/* Selection : Timing */}
+        {/* Selection : Timing Morning or Afternoon */}
         <div className="flex w-full flex-row justify-around">
           <SelectionInput
             name="timing"
@@ -138,6 +138,7 @@ const BookingSection = ({}) => {
 
       {/* Code for Tab and Laptop  */}
       <div className="mt-1 hidden flex-col lg:flex">
+        {/* Timing Selection */}
         <div className="ml-1 flex gap-5">
           <IconButtonPrimary
             title="Morning"
@@ -161,13 +162,12 @@ const BookingSection = ({}) => {
 
         <div className="ml-1 flex">
           {/* Cities and Date */}
-          <div className="border-primary mt-[48px] flex w-fit gap-10 rounded-2xl border px-[20px] py-5">
+          <div className="border-primary mt-[48px] flex w-fit gap-15 rounded-2xl border px-[40px] py-5">
             {/* City from */}
             <CitySelectionInput
               SvgIcon={<Location />}
               cityOptions={cityOptions}
               description="From City"
-              label="From"
               selectedCity={selectedCityFrom}
               setSelectedCity={setSelectedCityFrom}
             />
@@ -177,7 +177,6 @@ const BookingSection = ({}) => {
               SvgIcon={<BusStop />}
               cityOptions={cityOptions}
               description="To City"
-              label="To"
               selectedCity={selectedCityTo}
               setSelectedCity={setSelectedCityTo}
             />
@@ -188,7 +187,9 @@ const BookingSection = ({}) => {
                 <Calender />
               </div>
               <div>
-                <p className="text-grey text-[12px]">Journey Date</p>
+                <p className="text-grey text-[12px] font-medium">
+                  Journey Date
+                </p>
                 <input
                   type="date"
                   id="journeyDate"
@@ -196,7 +197,7 @@ const BookingSection = ({}) => {
                   max={maxJourneyDate}
                   value={journeyDate}
                   onChange={(e) => setJourneyDate(e.target.value)}
-                  className="text-primary cursor-pointer"
+                  className="text-primary cursor-pointer font-light"
                   required
                 />
               </div>

@@ -1,21 +1,47 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Gudea";
-  src: url('/fonts/Gudea-Regular.ttf');
-  font-weight: normal;
+  font-family: "Playfair Display";
+  src: url('/fonts/PlayfairDisplay-Bold');
+  font-weight: 700;
+}
+
+/* Plus Jakarta Sans */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url('/fonts/PlusJakartaSans-Bold.ttf');
+  font-weight: 700;
 }
 
 @font-face {
-  font-family: "Old Standard TT";
-  src: url('/fonts/OldStandardTT-Regular.ttf');
-  font-weight: normal;
+  font-family: "Plus Jakarta Sans";
+  src: url('/fonts/PlusJakartaSans-Medium.ttf');
+  font-weight: 500;
+}
+
+/* Roboto */
+@font-face {
+  font-family: "Roboto";
+  src: url('/fonts/Roboto-Bold.ttf');
+  font-weight: 700;
 }
 
 @font-face {
-  font-family: "Old Standard TT";
-  src: url('/fonts/OldStandardTT-Bold.ttf');
-  font-weight: bold;
+  font-family: "Roboto";
+  src: url('/fonts/Roboto-Medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('/fonts/Roboto-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('/fonts/Roboto-Light.ttf');
+  font-weight: 300;
 }
 
 @theme {
@@ -30,8 +56,9 @@
   --color-primary-bg: #e8e8e8;
   --color-secondary-bg: #fff;
 
-  --font-primary: "Gudea", sans-serif;
-  --font-secondary: "Old Standard TT", serif;
+  --font-primary: "Playfair Display";
+  --font-secondary: "Plus Jakarta Sans";
+  --font-body: 'Roboto';
 
   --shadow-black: 0px 1px 2px 0px rgba(0, 0, 0, 0.1),
     1px 1px 1px 0px rgba(0, 0, 0, 0.06);
@@ -53,32 +80,29 @@
   }
 
   .heading {
-    @apply font-secondary text-4xl font-bold lg:text-5xl xl:text-6xl;
+    @apply font-primary font-bold text-5xl xl:text-8xl
   }
 
   .sub-heading {
-    @apply font-secondary text-xl font-bold lg:text-3xl;
+    @apply font-secondary font-bold text-5xl lg:text-6xl;
   }
 
   .title {
-    @apply font-secondary text-lg font-bold lg:text-2xl 2xl:text-3xl;
+    @apply font-secondary text-lg font-bold lg:text-2xl;
   }
 
   .sub-title {
-    @apply font-secondary text-lg font-bold lg:text-xl;
+    @apply font-secondary text-lg font-medium lg:text-xl;
   }
 
   .caption {
-    @apply font-secondary text-xs;
+    @apply font-body font-medium text-xs;
   }
 }
 
 html {
   @apply bg-primary-bg dark:bg-primary-bg;
-
-  font: normal 400 1rem /1.5 "Gudea";
-
-  /* color: #000; */
+  font: normal 400 1rem /1.5 var(--font-body);
   margin: 0;
   padding: 0;
   box-sizing: content-box;
@@ -106,7 +130,6 @@ body {
   }
 }
 
-
 /* Scroll Driven Animation */
 /* @keyframes reveal {
   from {
@@ -128,14 +151,11 @@ body {
   }
 } */
 
-
 @media (min-width:1024px) {
   .bookingSectionBg {
     clip-path: path("M1 26V224.5C1 238.307 12.1929 249.5 26 249.5H729.5C743.307 249.5 754.5 238.307 754.5 224.5V114C754.5 100.193 743.307 89 729.5 89H408C394.193 89 383 77.8071 383 64V26C383 12.1929 371.807 1 358 1H26C12.1929 1 1 12.1929 1 26Z")
   }
 }
-
-
 
 .buttonPrimary {
   @apply bg-primary text-secondary-text shadow-pink cursor-pointer font-normal;

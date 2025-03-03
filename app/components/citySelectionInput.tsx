@@ -3,7 +3,6 @@ import DropDownInput from "./dropDownInput";
 
 interface CitySelectionInputProps {
   SvgIcon: React.ReactNode;
-  label: string;
   description: string;
   selectedCity: City;
   cityOptions: City[];
@@ -11,7 +10,6 @@ interface CitySelectionInputProps {
 }
 const CitySelectionInput: React.FC<CitySelectionInputProps> = ({
   SvgIcon,
-  label,
   description,
   selectedCity,
   cityOptions,
@@ -22,14 +20,13 @@ const CitySelectionInput: React.FC<CitySelectionInputProps> = ({
       {SvgIcon}
     </div>
     <div>
-      <p className="text-grey text-[12px]">{description}</p>
+      <p className="text-grey text-[12px] font-medium">{description}</p>
       {/* Selection: City to*/}
       <DropDownInput
         selectedValue={selectedCity}
         options={cityOptions}
-        className="text-secondary"
-        selectClassName="focus:outline-none! appearance-none! px-2 text-primary"
-        label={label}
+        className="text-secondary font-light"
+        selectClassName="focus:outline-none! appearance-none!"
         setSelectedValue={setSelectedCity}
       />
     </div>

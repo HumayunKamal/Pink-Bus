@@ -5,10 +5,10 @@ const BusDetailSection = () => {
     <>
       {/*Section heading */}
       <div className="col-span-full mt-10 sm:mt-0">
-        <p className="text-secondary/50 ml-1 text-xs font-bold sm:text-sm">
-          Safety and comfort
+        <p className="text-secondary/50 ml-1 text-xs lg:text-[16px]">
+          Safety, comfort our priority
         </p>
-        <h1 className="heading mt-2">Our Bus</h1>
+        <h1 className="sub-heading">Our Bus</h1>
       </div>
 
       {/* Card */}

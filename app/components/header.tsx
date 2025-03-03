@@ -21,7 +21,7 @@ const Header = () => {
           <NavigationLinks />
 
           {/* Light mode */}
-          <LightMode className="bg-primary-light fill-primary ml-auto h-auto w-[24px] cursor-pointer rounded-full p-1 lg:w-[34px] lg:p-2 2xl:w-[34px]" />
+          <LightMode className="bg-primary fill-primary stroke-secondary-text ml-auto h-auto w-[24px] cursor-pointer rounded-full p-1 shadow-white lg:w-[34px] lg:p-2 2xl:w-[34px]" />
         </div>
       </div>
     </>

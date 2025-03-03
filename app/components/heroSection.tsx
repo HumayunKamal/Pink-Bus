@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { heroBackground, heroBanner } from "~/assets";
-import { ButtonPrimary } from "~/components";
+// import { ButtonPrimary } from "~/components";
 import { heroData } from "~/constantData";
 
 const HeroSection = ({}) => {
@@ -46,7 +46,7 @@ const HeroSection = ({}) => {
       {/* Hero Section Description */}
       <AnimatePresence>
         <motion.div
-          className="text-secondary-text 3xl:space-y-4 absolute top-[30%] left-[10%] space-y-2 sm:max-lg:left-[18%] xl:space-y-3"
+          className="text-secondary-text absolute top-[30%] left-[12%] sm:max-lg:left-[18%]"
           initial="initial"
           whileInView="animate"
           variants={{
@@ -58,23 +58,30 @@ const HeroSection = ({}) => {
             },
           }}
         >
+          <motion.p
+            variants={staggerChild}
+            className="text-primary-light font-bold lg:text-xl"
+          >
+            {heroData.subTitle}
+          </motion.p>
+
           <motion.h1
             variants={staggerChild}
-            className="heading from-primary-text to-secondary-text bg-linear-to-r bg-clip-text text-transparent"
+            className="heading from-primary-text to-secondary-text bg-linear-to-b bg-clip-text text-transparent"
           >
             {heroData.title}
           </motion.h1>
 
           <motion.p
             variants={staggerChild}
-            className="ml-1 w-[260px] 2xl:w-[400px] 2xl:text-2xl"
+            className="xl:text-xl mt-1 ml-1 w-[240px] xl:w-[400px]"
           >
             {heroData.description}
           </motion.p>
 
-          <motion.div className="ml-1 pt-6 2xl:pt-10" variants={staggerChild}>
+          {/* <motion.div className="ml-1 pt-6 2xl:pt-10" variants={staggerChild}>
             <ButtonPrimary title="Book Now" to="#bookingSection" />
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </AnimatePresence>
     </div>

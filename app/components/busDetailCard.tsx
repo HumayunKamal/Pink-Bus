@@ -7,21 +7,19 @@ const BusDetailCard = () => (
     <Bus3DModel />
 
     {/* Detail */}
-    <div className="p-5 sm:hidden">
+    <div className="px-4 pb-4 sm:hidden">
       {/* Bus heading */}
-      <h2 className="text-primary text-[28px] font-bold lg:text-[32px]">
-        Pink Bus
+      <h2 className="text-primary font-secondary text-[26px] font-bold lg:text-[32px]">
+        Gulabi Bus
       </h2>
-      <p className="caption">Environment Friendly</p>
+      <p className="caption text-secondary/50">Environment Friendly</p>
 
       <BusStats />
     </div>
 
     <div className="absolute bottom-5 left-5 hidden sm:block">
-      <h2 className="text-primary text-[28px] font-bold lg:text-[32px]">
-        Pink Bus
-      </h2>
-      <p className="caption">Environment Friendly</p>
+      <h2 className="text-primary title xl:text-[32px]">Gulabi Bus</h2>
+      <p className="caption text-secondary/50">Environment Friendly Electric</p>
     </div>
   </div>
 );
