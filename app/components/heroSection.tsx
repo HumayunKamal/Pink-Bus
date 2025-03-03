@@ -67,15 +67,12 @@ const HeroSection = ({}) => {
 
           <motion.h1
             variants={staggerChild}
-            className="heading from-primary-text to-secondary-text bg-linear-to-b bg-clip-text text-transparent"
+            className="heading"
           >
             {heroData.title}
           </motion.h1>
 
-          <motion.p
-            variants={staggerChild}
-            className="xl:text-xl mt-1 ml-1 w-[240px] xl:w-[400px]"
-          >
+          <motion.p variants={staggerChild} className="mt-1 ml-1 xl:text-xl">
             {heroData.description}
           </motion.p>
 
