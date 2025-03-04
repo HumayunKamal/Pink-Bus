@@ -1,5 +1,5 @@
 const Login = () => {
-  return <div>Login : Coming Soon!</div>;
+  return <div className="col-span-full mt-10 h-svh">Login : Coming Soon!</div>;
 };
 
 export default Login;

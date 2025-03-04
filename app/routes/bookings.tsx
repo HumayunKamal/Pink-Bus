@@ -1,5 +1,7 @@
 const Bookings = () => {
-  return <div>Bookings : Coming Soon!</div>;
+  return (
+    <div className="col-span-full mt-10 h-svh">Bookings : Coming Soon!</div>
+  );
 };
 
 export default Bookings;

@@ -7,7 +7,7 @@ const BusDetailCard = () => (
     <Bus3DModel />
 
     {/* Detail */}
-    <div className="px-4 pb-4 sm:hidden">
+    <div className="px-4 pb-5 sm:hidden">
       {/* Bus heading */}
       <h2 className="text-primary font-secondary text-[26px] font-bold lg:text-[32px]">
         Gulabi Bus

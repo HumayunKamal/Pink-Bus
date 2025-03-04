@@ -1,13 +1,17 @@
 const navLinks = [
   {
+    name: "Home",
+    href: "/",
+  },
+  {
     name: "Bookings",
     href: "/bookings",
   },
-  {
-    name: "Log in",
-    href: "/login",
-  },
 ];
+// {
+//   name: "Log in",
+//   href: "/login",
+// },
 
 const socialLinks = [
   {

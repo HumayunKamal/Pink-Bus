@@ -22,7 +22,7 @@ export default function Home() {
       <BookingSection />
       {/* Buses Detail Section */}
       <BusDetailSection />
-      {/* Accordion */}
+      {/* Accordion Section*/}
       <Accordion />
     </>
   );

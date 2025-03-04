@@ -4,7 +4,7 @@ const BusDetailSection = () => {
   return (
     <>
       {/*Section heading */}
-      <div className="col-span-full mt-10 sm:mt-0">
+      <div className="col-span-full">
         <p className="text-secondary/50 ml-1 text-xs lg:text-[16px]">
           Safety, comfort our priority
         </p>

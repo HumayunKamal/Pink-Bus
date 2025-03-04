@@ -157,6 +157,13 @@ body {
   }
 }
 
+
+@media (min-width:1024px) and (max-width:1440px) {
+  .footer {
+    clip-path: path("M721.244 71.4196C344.9 -32.1206 162.717 -15.1135 0 71.4196V277H1436V57.9142C1403.56 103.599 1206.96 205.051 721.244 71.4196Z");
+  }
+}
+
 .buttonPrimary {
   @apply bg-primary text-secondary-text shadow-pink cursor-pointer font-normal;
 }
@@ -245,6 +252,6 @@ dialog {
   }
 
   [open]::details-content {
-    height: calc-size(auto, size);  
+    height: calc-size(auto, size);
   }
 }

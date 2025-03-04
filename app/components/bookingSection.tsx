@@ -54,7 +54,7 @@ const BookingSection = ({}) => {
   return (
     <motion.div
       id="bookingSection"
-      className="bg-secondary-bg bookingSectionBg z-10 col-span-full mx-auto max-w-[800px] translate-y-[-20%] rounded-[20px] p-4 shadow-white sm:-translate-y-1/4! sm:p-6 sm:max-lg:min-w-[360px] lg:h-[250px] lg:w-[754px] lg:-translate-y-1/2! lg:p-4"
+      className="bg-secondary-bg bookingSectionBg z-10 col-span-full mx-auto max-w-[800px] -translate-y-1/3 rounded-[20px] p-4 shadow-white sm:-translate-y-1/4! sm:p-6 sm:max-lg:min-w-[360px] lg:h-[250px] lg:w-[754px] lg:-translate-y-1/2! lg:p-4"
       initial="initial"
       whileInView="animate"
       viewport={{ once: false, amount: 0.5 }}
