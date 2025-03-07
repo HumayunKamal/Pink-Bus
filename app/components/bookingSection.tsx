@@ -9,14 +9,12 @@ import {
 import { BusStop, Calender, Location, Submit, SunSvg } from "~/components/svgs";
 
 import { motion } from "motion/react";
-import { City } from "~/constantData";
+import { City, Timing } from "~/constantData";
 import { getMonthMaxDate } from "~/utils";
 
 const BookingSection = ({}) => {
   // States
-  const [selectedTime, setSelectedTime] = useState<"morning" | "afternoon">(
-    "morning",
-  );
+  const [selectedTime, setSelectedTime] = useState<Timing>(Timing.Morning);
   const [selectedCityFrom, setSelectedCityFrom] = useState<City>(City.Chakwal);
   const [selectedCityTo, setSelectedCityTo] = useState<City>(City.Faizabad);
   const cityOptions = Object.values(City);
@@ -77,14 +75,14 @@ const BookingSection = ({}) => {
           <SelectionInput
             name="timing"
             labelText="Morning"
-            value="morning"
+            value={Timing.Morning}
             selectedValue={selectedTime}
             onChange={setSelectedTime}
           />
           <SelectionInput
             name="timing"
             labelText="Afternoon"
-            value="afternoon"
+            value={Timing.Afternoon}
             selectedValue={selectedTime}
             onChange={setSelectedTime}
           />
@@ -143,7 +141,7 @@ const BookingSection = ({}) => {
           <IconButtonPrimary
             title="Morning"
             isActive={selectedTime === "morning"}
-            onClick={() => setSelectedTime("morning")}
+            onClick={() => setSelectedTime(Timing.Morning)}
           >
             <SunSvg
               className={`${selectedTime === "morning" ? "stroke-secondary-text" : "stroke-primary-text"} h-[22px] w-[22px] duration-200 ease-linear`}
@@ -152,7 +150,7 @@ const BookingSection = ({}) => {
           <IconButtonPrimary
             title="Afternoon"
             isActive={selectedTime === "afternoon"}
-            onClick={() => setSelectedTime("afternoon")}
+            onClick={() => setSelectedTime(Timing.Afternoon)}
           >
             <SunSvg
               className={`${selectedTime === "afternoon" ? "stroke-secondary-text" : "stroke-primary-text"} h-[22px] w-[22px] rotate-90 duration-200 ease-linear`}

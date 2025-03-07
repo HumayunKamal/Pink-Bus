@@ -12,9 +12,10 @@ import type { Route } from "./+types/root";
 import stylesheet from "./app.css?url";
 import { Footer, Header } from "./components";
 import { TwSizeIndicator } from "./utils";
+import { AppProvider } from "./context/AppContext";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet, },
+  { rel: "stylesheet", href: stylesheet },
   { rel: "manifest", href: "/site.webmanifest" },
 ];
 
@@ -41,11 +42,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <>
+    <AppProvider>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </AppProvider>
   );
 }
 

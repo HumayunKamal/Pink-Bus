@@ -13,7 +13,7 @@ const accordionContent = [
   },
   {
     question: "Is this service only for girls?",
-    answer: "Obviously, for girls ☕. Driver and staff are also female."
+    answer: "Obviously, for girls. Driver and staff are also female."
   },
   {
     question: "Payment method?",
@@ -22,24 +22,4 @@ const accordionContent = [
 ]
 
 
-const cities = [
-  "Chakwal",
-  "Dhudial",
-  "Jatli",
-  "Mandra",
-  "Rawat",
-  "Gulberg",
-  "Faizabad",
-];
-
-enum City {
-  Chakwal = "Chakwal",
-  Dhudial = "Dhudial",
-  Jatli = "Jatli",
-  Mandra = "Mandra",
-  Rawat = "Rawat",
-  Gulberg = "Gulberg",
-  Faizabad = "Faizabad",
-}
-
-export { heroData, cities, City, accordionContent };
+export { heroData, accordionContent };
