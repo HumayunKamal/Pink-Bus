@@ -13,10 +13,8 @@ enum City {
 }
 
 enum ActionType {
-    TOGGLE_THEME = "TOGGLE_THEME",
-    UPDATE_FORM = "UPDATE_FORM",
-    SET_ERROR = "SET_ERROR",
-    CLEAR_ERROR = "CLEAR_ERROR"
+    TOGGLE_THEME,
+    HANDLE_CHANGE
 }
 
 enum ThemeMode {

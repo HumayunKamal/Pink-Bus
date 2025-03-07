@@ -4,22 +4,62 @@ import React, {
   useReducer,
   type ReactNode,
 } from "react";
-import { ActionType } from "~/constantData";
+import { ActionType, City, ThemeMode, Timing } from "~/constantData";
 
-// AppState interface and initial value
+// AppState interface and initial State
 interface AppState {
-  error: string;
+  theme: ThemeMode;
+  timing: Timing;
+  from: City;
+  to: City;
+  date: Date;
+  email: string;
+  error: null | string;
 }
-
 const initialState: AppState = {
-  error: "",
+  theme: ThemeMode.Light,
+  timing: Timing.Morning,
+  from: City.Chakwal,
+  to: City.Faizabad,
+  date: new Date(),
+  email: "",
+  error: null,
 };
 
-// create and use context
+///////////////////////////////
+// Actions and reducer
+// Create a union type of all possible payload objects
+type PayloadType = {
+  [K in keyof AppState]: {
+    name: K;
+    value: AppState[K];
+  };
+}[keyof AppState];
+
+interface ChangHandlerAction {
+  type: ActionType.HANDLE_CHANGE;
+  payload: PayloadType;
+}
+
+// Union of all actions
+type Action = ChangHandlerAction;
+const appReducer = (state: AppState, { type, payload }: Action): AppState => {
+  switch (type) {
+    case ActionType.HANDLE_CHANGE:
+      return { ...state, [payload.name]: payload.value };
+
+    default:
+      return state;
+  }
+};
+
+/////////////////////////
+// Create and use context
 const AppContext = createContext<{
   state: AppState;
   dispatch: React.Dispatch<Action>;
-}>({ state: initialState, dispatch: () => null });
+  handleChange: (payload: PayloadType) => void;
+}>({ state: initialState, dispatch: () => null, handleChange: () => {} });
 
 const useAppContext = () => {
   const context = useContext(AppContext);
@@ -29,34 +69,18 @@ const useAppContext = () => {
   return context;
 };
 
-// action with payload
-interface SetErrorAction {
-  type: ActionType.SET_ERROR;
-  payload: string;
-}
-
-interface SimpleAction {
-  type: ActionType.CLEAR_ERROR;
-}
-
-// Union of all actions
-type Action = SetErrorAction | SimpleAction;
-
-const appReducer = (state: AppState, action: Action): AppState => {
-  switch (action.type) {
-    case ActionType.SET_ERROR:
-      return { ...state, error: action.payload };
-    case ActionType.CLEAR_ERROR:
-      return { ...state, error: "" };
-    default:
-      return state;
-  }
-};
-
+// Context provider
 const AppProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
+  const handleChange = (payload: PayloadType) => {
+    dispatch({ type: ActionType.HANDLE_CHANGE, payload });
+  };
 
-  return <AppContext value={{ state, dispatch }}>{children}</AppContext>;
+  return (
+    <AppContext value={{ state, dispatch, handleChange }}>
+      {children}
+    </AppContext>
+  );
 };
 
 export { AppProvider, useAppContext };
