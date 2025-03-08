@@ -10,7 +10,7 @@ import {
 
 import type { Route } from "./+types/root";
 import stylesheet from "./app.css?url";
-import { Footer, Header } from "./components";
+import { ErrorModal, Footer, Header } from "./components";
 import { TwSizeIndicator } from "./utils";
 import { AppProvider } from "./context/AppContext";
 
@@ -45,6 +45,7 @@ export default function App() {
     <AppProvider>
       <Header />
       <Outlet />
+      <ErrorModal />
       <Footer />
     </AppProvider>
   );

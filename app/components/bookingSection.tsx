@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   CitySelectionInput,
-  Dialog,
   DropDownInput,
   IconButtonPrimary,
   SelectionInput,
@@ -10,6 +9,7 @@ import { BusStop, Calender, Location, Submit, SunSvg } from "~/components/svgs";
 
 import { motion } from "motion/react";
 import { City, Timing } from "~/constantData";
+import { useAppContext } from "~/context/AppContext";
 import { getMonthMaxDate } from "~/utils";
 
 const BookingSection = ({}) => {
@@ -21,7 +21,7 @@ const BookingSection = ({}) => {
   const todayDay = new Date().toISOString().split("T")[0];
   const [journeyDate, setJourneyDate] = useState<string>(todayDay);
   const maxJourneyDate = getMonthMaxDate(1);
-  const [error, setError] = useState("");
+  const { globalState, handleChange } = useAppContext();
 
   // Handlers
   const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,23 +29,16 @@ const BookingSection = ({}) => {
 
     // Later I will move error to global state...
     if (selectedCityFrom === selectedCityTo) {
-      setError("Both cities can't be same");
-      const timeoutId = setTimeout(() => {
-        setError("");
-      }, 2000);
-      return () => clearTimeout(timeoutId);
+      handleChange({ name: "error", value: "Both cities can't be same" });
     }
 
     if (journeyDate < todayDay || journeyDate > maxJourneyDate) {
-      setError(
-        "Date should be between today and next 30 days or use the calender icon.",
-      );
-      const timeoutId = setTimeout(() => {
-        setError("");
-      }, 2000);
-      return () => clearTimeout(timeoutId);
+      handleChange({
+        name: "error",
+        value:
+          "Date should be between today and next 30 days or use the calender icon.",
+      });
     }
-
     console.log(selectedCityFrom, selectedCityTo, journeyDate, selectedTime);
   };
 
@@ -126,7 +119,7 @@ const BookingSection = ({}) => {
         <button
           type="submit"
           onClick={submitHandler}
-          disabled={Boolean(error)}
+          disabled={Boolean(globalState.error)}
           className="bg-primary text-secondary-text shadow-pink mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] duration-300 ease-in hover:-translate-y-[2px]"
         >
           <p className="text-xl font-medium">Book</p>
@@ -206,19 +199,13 @@ const BookingSection = ({}) => {
           <button
             type="submit"
             onClick={submitHandler}
-            disabled={Boolean(error)}
+            disabled={Boolean(globalState.error)}
             className="bg-primary hover:shadow-pink mx-auto mt-[48px] w-[80px] cursor-pointer place-items-center rounded-[15px] duration-300 ease-out hover:scale-102"
           >
             <Submit className="stroke-secondary-text h-[48px] w-[48px] stroke-3" />
           </button>
         </div>
       </div>
-
-      {/* Dialog for Error */}
-      <Dialog
-        error={error}
-        className="absolute top-1/2 left-1/2 w-fit -translate-x-1/2 -translate-y-1/2"
-      />
     </motion.div>
   );
 };

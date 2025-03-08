@@ -23,7 +23,7 @@ const initialState: AppState = {
   to: City.Faizabad,
   date: new Date(),
   email: "",
-  error: null,
+  error: "",
 };
 
 ///////////////////////////////
@@ -56,10 +56,9 @@ const appReducer = (state: AppState, { type, payload }: Action): AppState => {
 /////////////////////////
 // Create and use context
 const AppContext = createContext<{
-  state: AppState;
-  dispatch: React.Dispatch<Action>;
+  globalState: AppState;
   handleChange: (payload: PayloadType) => void;
-}>({ state: initialState, dispatch: () => null, handleChange: () => {} });
+}>({ globalState: initialState, handleChange: () => {} });
 
 const useAppContext = () => {
   const context = useContext(AppContext);
@@ -71,15 +70,13 @@ const useAppContext = () => {
 
 // Context provider
 const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(appReducer, initialState);
+  const [globalState, dispatch] = useReducer(appReducer, initialState);
   const handleChange = (payload: PayloadType) => {
     dispatch({ type: ActionType.HANDLE_CHANGE, payload });
   };
 
   return (
-    <AppContext value={{ state, dispatch, handleChange }}>
-      {children}
-    </AppContext>
+    <AppContext value={{ globalState, handleChange }}>{children}</AppContext>
   );
 };
 

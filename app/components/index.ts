@@ -9,6 +9,7 @@ import SelectionInput from "./selectionInput";
 import CitySelectionInput from "./citySelectionInput";
 import BusDetailSection from "./busDetailSection";
 import Accordion from "./accordion";
+import ErrorModal from "./errorModal";
 export {
   ButtonPrimary,
   Footer,
@@ -21,5 +22,6 @@ export {
   HeroSection,
   CitySelectionInput,
   BusDetailSection,
-  Accordion
+  Accordion,
+  ErrorModal
 };
