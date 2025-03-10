@@ -1,11 +1,26 @@
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef } from "react";
 import { busModel } from "~/assets";
+import * as THREE from "three";
 
 const Model = () => {
+  const modelRef = useRef<THREE.Mesh | null>(null);
   const { scene } = useGLTF(busModel);
+
+  useFrame((state, delta) => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y -= delta / 2;
+    }
+  });
+
   return (
-    <primitive object={scene} rotation={[0, 0.8, 0]} position={[0.5, 0, 0]} />
+    <primitive
+      ref={modelRef}
+      object={scene}
+      rotation={[0, 0.8, 0]}
+      position={[0.5, 0, 0]}
+    />
   );
 };
 
