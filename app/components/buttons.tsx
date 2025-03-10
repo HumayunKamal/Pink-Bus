@@ -15,16 +15,18 @@ const IconButtonPrimary = ({
   children,
   isActive,
   onClick,
+  className,
 }: {
   title: string;
   children: React.ReactNode;
   isActive?: boolean;
   onClick?: () => void;
+  className?: string;
 }) => {
   return (
     <button
       onClick={onClick}
-      className={`${isActive ? "buttonPrimary" : "buttonOutline"} font-secondary flex h-[60px] w-[160px] flex-row items-center justify-center gap-2 rounded-[20px] font-medium duration-200 ease-linear`}
+      className={`${isActive ? "buttonPrimary" : "buttonOutline"} ${className} font-secondary flex h-[60px] w-[160px] flex-row items-center justify-center gap-2 rounded-[20px] font-medium duration-200 ease-linear`}
     >
       <p className="text-[20px]">{title}</p>
 

@@ -3,9 +3,9 @@ import { accordionContent } from "~/constantData";
 const Accordion = () => {
   return (
     <div className="col-span-full items-center justify-center max-sm:flex lg:col-start-2 lg:col-end-12">
-      <div className="bg-secondary-bg my-10 rounded-2xl px-5 py-6 shadow-black max-sm:max-w-[280px] sm:p-8 lg:my-18 lg:px-20 lg:py-12">
+      <div className="bg-secondary-bg dark:bg-dark-mode my-10 rounded-2xl px-5 py-6 shadow-black max-sm:max-w-[280px] sm:p-8 lg:my-18 lg:px-20 lg:py-12">
         {/* Title */}
-        <h4 className="font-secondary dark:text-primary font-medium lg:text-2xl">
+        <h4 className="font-secondary dark:text-secondary-text font-medium lg:text-2xl">
           Frequently Asked Questions
         </h4>
         {/* Faqs */}

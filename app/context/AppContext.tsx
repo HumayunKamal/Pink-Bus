@@ -1,14 +1,15 @@
-import React, {
+import {
   createContext,
   useContext,
+  useEffect,
   useReducer,
   type ReactNode,
 } from "react";
-import { ActionType, City, ThemeMode, Timing } from "~/constantData";
+import { ActionType, City, Timing } from "~/constantData";
 
 // AppState interface and initial State
 interface AppState {
-  theme: ThemeMode;
+  isDarkMode: boolean;
   timing: Timing;
   from: City;
   to: City;
@@ -17,7 +18,7 @@ interface AppState {
   error: null | string;
 }
 const initialState: AppState = {
-  theme: ThemeMode.Light,
+  isDarkMode: false,
   timing: Timing.Morning,
   from: City.Chakwal,
   to: City.Faizabad,
@@ -74,6 +75,22 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const handleChange = (payload: PayloadType) => {
     dispatch({ type: ActionType.HANDLE_CHANGE, payload });
   };
+
+  /* /////////////////////// */
+  /* Context DarkMode Logic */
+  // useEffect(() => {
+  //   handleChange({
+  //     name: "isDarkMode",
+  //     value:
+  //       JSON.parse(localStorage.getItem("dark") as string) ||
+  //       (!("dark" in localStorage) &&
+  //         window.matchMedia("(prefers-color-scheme: dark)").matches),
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem("dark", JSON.stringify(globalState.isDarkMode));
+  // }, [globalState.isDarkMode]);
 
   return (
     <AppContext value={{ globalState, handleChange }}>{children}</AppContext>

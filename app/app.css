@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
   font-family: "Playfair Display";
@@ -55,6 +56,7 @@
   --color-secondary-text: #ffffff;
   --color-primary-bg: #e8e8e8;
   --color-secondary-bg: #fff;
+  --color-dark-mode: #2C2C2C;
 
   --font-primary: "Playfair Display";
   --font-secondary: "Plus Jakarta Sans";
@@ -106,9 +108,8 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: content-box;
-
-  color-scheme: light dark;
-  color: light-dark(#000, #fff);
+  /* color-scheme: light dark;
+  color: light-dark(#000, #fff); */
 
   & :focus {
     outline: none;
@@ -157,7 +158,6 @@ body {
   }
 }
 
-
 @media (min-width:1024px) and (max-width:1440px) {
   .footer {
     clip-path: path("M721.244 71.4196C344.9 -32.1206 162.717 -15.1135 0 71.4196V277H1436V57.9142C1403.56 103.599 1206.96 205.051 721.244 71.4196Z");
@@ -165,7 +165,7 @@ body {
 }
 
 .buttonPrimary {
-  @apply bg-primary text-secondary-text shadow-pink cursor-pointer font-normal;
+  @apply bg-primary text-secondary-text dark:text-dark-mode shadow-pink cursor-pointer font-normal;
 }
 
 .buttonOutline {
@@ -178,6 +178,10 @@ body {
 
 .group-hover-transition {
   @apply duration-500 ease-in-out;
+}
+
+button {
+  border: none;
 }
 
 /* Selection of text */
@@ -204,6 +208,33 @@ select:focus {
 
 :active {
   outline: none;
+}
+
+html.dark input[type="radio"] {
+  appearance: none;
+  /* General */
+  border: 2px dotted #ffb6c1;
+  /* Add custom styling */
+  border-radius: 50%;
+  /* Make it circular */
+  width: 16px;
+  height: 16px;
+}
+
+html.dark input[type="radio"]:checked {
+  background-color: transparent;
+  border: 2px solid #ffb6c1;
+  border-color: #ffb6c1;
+}
+
+html.dark input[type="radio"]::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border-radius: 50%;
+  margin: 1px;
 }
 
 /* Radio button */
@@ -242,7 +273,7 @@ dialog {
   border-radius: 10px;
 }
 
-
+/* Accordion Section */
 @supports selector(::details-content) {
   ::details-content {
     content-visibility: visible;

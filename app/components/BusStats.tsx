@@ -8,10 +8,10 @@ interface StatItemProps {
 
 const StatItem = ({ Icon, label, value }: StatItemProps) => (
   <div className="flex flex-col items-center justify-center">
-    <div className="bg-primary flex h-[36px] w-[36px] items-center justify-center rounded-full">
+    <div className="bg-primary dark:bg-dark-mode flex h-[36px] w-[36px] items-center justify-center rounded-full">
       <Icon className="fill-secondary-text" />
     </div>
-    <p className="text-primary mt-2 text-sm">{label}</p>
+    <p className="text-primary dark:text-dark-mode mt-2 text-sm">{label}</p>
     <p className="caption text-secondary/50">{value}</p>
   </div>
 );

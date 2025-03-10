@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { pinkLogo } from "~/assets";
+import { pinkLogo, whiteLogo } from "~/assets";
 import { navLinks } from "~/constantData";
 import { ArrowUp } from "./svgs";
 
@@ -8,14 +8,19 @@ const Footer = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   };
   return (
-    <div className="footer bg-secondary-bg text-primary col-span-full -mx-[2rem] p-2 sm:-mx-[7.5rem] lg:h-[277px] 2xl:h-[150px]">
+    <div className="footer bg-secondary-bg text-primary dark:bg-dark-mode dark:text-secondary-text col-span-full -mx-[2rem] p-2 sm:-mx-[7.5rem] lg:mt-10 lg:h-[277px] 2xl:h-[150px]">
       <div className="flex items-center lg:col-span-1 lg:col-end-12 lg:mx-[7.5rem] lg:mt-20 2xl:mt-0">
         {/* Logo Area */}
         <Link to="/" className="cursor-pointer">
           <img
             src={pinkLogo}
             alt="logo image"
-            className="h-auto w-[60px] lg:w-[100px]"
+            className="h-auto w-[60px] lg:w-[100px] dark:hidden"
+          />
+          <img
+            src={whiteLogo}
+            alt="logo image"
+            className="hidden h-auto w-[60px] lg:w-[100px] dark:block"
           />
         </Link>
         <div>
@@ -41,7 +46,7 @@ const Footer = () => {
           </nav>
 
           <div className="cursor-pointer" onClick={scrollToTop}>
-            <ArrowUp className="bg-primary fill-secondary-text h-[32px] w-[32px] animate-pulse rounded-full p-2" />
+            <ArrowUp className="bg-primary fill-secondary-text dark:bg-secondary-bg dark:fill-dark-mode h-[32px] w-[32px] rounded-full p-2" />
           </div>
         </div>
       </div>

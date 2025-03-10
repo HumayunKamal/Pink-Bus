@@ -1,5 +1,10 @@
+import { motion } from "motion/react";
+import type React from "react";
+
 interface SvgProps {
   className?: string;
+  onClick?: React.ReactEventHandler;
+  isDarkMode?: boolean;
 }
 const SunSvg = ({ className }: SvgProps) => (
   <svg className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,21 +16,41 @@ const SunSvg = ({ className }: SvgProps) => (
   </svg>
 );
 
-const LightMode = ({ className }: SvgProps) => (
-  <svg
+const LightMode = ({ className, onClick, isDarkMode }: SvgProps) => (
+  <motion.svg
     width="22"
     height="22"
     viewBox="0 0 22 22"
     className={className}
+    onClick={onClick}
     xmlns="http://www.w3.org/2000/svg"
+    // initial={{ rotate: 0 }}
+    // animate={{ rotate: isDarkMode ? 90 : 0 }}
+    // transition={{ duration: 0.3, ease: "easeOut" }}
   >
-    <path
-      d="M11 1V3.5M18.0711 3.92889L16.3033 5.69667M21 11H18.5M18.0711 18.0711L16.3033 16.3033M11 18.5V21M5.69667 16.3033L3.92889 18.0711M3.5 11H1M5.69667 5.69667L3.92889 3.92889M15.1667 11C15.1667 12.1051 14.7277 13.1649 13.9463 13.9463C13.1649 14.7277 12.1051 15.1667 11 15.1667C9.89493 15.1667 8.83512 14.7277 8.05372 13.9463C7.27232 13.1649 6.83333 12.1051 6.83333 11C6.83333 9.89493 7.27232 8.83512 8.05372 8.05372C8.83512 7.27232 9.89493 6.83333 11 6.83333C12.1051 6.83333 13.1649 7.27232 13.9463 8.05372C14.7277 8.83512 15.1667 9.89493 15.1667 11Z"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+    {isDarkMode ? (
+      // Sun
+      <motion.path
+        d="M11 1V3.5M18.0711 3.92889L16.3033 5.69667M21 11H18.5M18.0711 18.0711L16.3033 16.3033M11 18.5V21M5.69667 16.3033L3.92889 18.0711M3.5 11H1M5.69667 5.69667L3.92889 3.92889M15.1667 11C15.1667 12.1051 14.7277 13.1649 13.9463 13.9463C13.1649 14.7277 12.1051 15.1667 11 15.1667C9.89493 15.1667 8.83512 14.7277 8.05372 13.9463C7.27232 13.1649 6.83333 12.1051 6.83333 11C6.83333 9.89493 7.27232 8.83512 8.05372 8.05372C8.83512 7.27232 9.89493 6.83333 11 6.83333C12.1051 6.83333 13.1649 7.27232 13.9463 8.05372C14.7277 8.83512 15.1667 9.89493 15.1667 11Z"
+        initial={{ opacity: isDarkMode ? 0 : 1 }}
+        animate={{ opacity: isDarkMode ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        key="dark"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ) : (
+      // Moon
+      <motion.path
+        d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+        initial={{ opacity: isDarkMode ? 1 : 0 }}
+        animate={{ opacity: isDarkMode ? 0 : 1 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        key="light"
+      />
+    )}
+  </motion.svg>
 );
 
 const Submit = ({ className }: SvgProps) => (
@@ -67,12 +92,7 @@ const BusStop = ({ className }: SvgProps) => (
     className={className}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      d="M12.6667 12.675L12.675 12.6658M4.33334 12.675L4.34167 12.6658M16 17.6667V6M16 6H14.3333V1H17.6667V6H16ZM12.6667 16V17.6667H11V16H12.6667ZM12.6667 16L1.5 16C1.22386 16 1 15.7762 1 15.5V9.83333C1 9.55717 1.22386 9.33333 1.5 9.33333H12.6667M11 6H4.33333M11 1H4.33333C2.49238 1 1 2.49238 1 4.33333V6M2.66667 16V17.6667H4.33334V16H2.66667Z"
-      stroke="#FFE5EC"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M12.6667 12.675L12.675 12.6658M4.33334 12.675L4.34167 12.6658M16 17.6667V6M16 6H14.3333V1H17.6667V6H16ZM12.6667 16V17.6667H11V16H12.6667ZM12.6667 16L1.5 16C1.22386 16 1 15.7762 1 15.5V9.83333C1 9.55717 1.22386 9.33333 1.5 9.33333H12.6667M11 6H4.33333M11 1H4.33333C2.49238 1 1 2.49238 1 4.33333V6M2.66667 16V17.6667H4.33334V16H2.66667Z" />
   </svg>
 );
 

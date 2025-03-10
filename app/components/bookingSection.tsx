@@ -45,7 +45,7 @@ const BookingSection = ({}) => {
   return (
     <motion.div
       id="bookingSection"
-      className="bg-secondary-bg bookingSectionBg z-10 col-span-full mx-auto max-w-[800px] -translate-y-1/3 rounded-[20px] p-4 shadow-white sm:-translate-y-1/4! sm:p-6 sm:max-lg:min-w-[360px] lg:h-[250px] lg:w-[754px] lg:-translate-y-1/2! lg:p-4"
+      className="bg-secondary-bg dark:bg-dark-mode bookingSectionBg z-10 col-span-full mx-auto max-w-[800px] -translate-y-1/3 rounded-[20px] p-4 shadow-white sm:-translate-y-1/4! sm:p-6 sm:max-lg:min-w-[360px] lg:h-[250px] lg:w-[754px] lg:-translate-y-1/2! lg:p-4"
       initial="initial"
       whileInView="animate"
       viewport={{ once: false, amount: 0.5 }}
@@ -120,10 +120,10 @@ const BookingSection = ({}) => {
           type="submit"
           onClick={submitHandler}
           disabled={Boolean(globalState.error)}
-          className="bg-primary text-secondary-text shadow-pink mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] duration-300 ease-in hover:-translate-y-[2px]"
+          className="bg-primary text-secondary-text dark:text-dark-mode shadow-pink mt-2 flex h-[50px] w-1/2 cursor-pointer flex-row items-center justify-center gap-1 self-start rounded-[10px] duration-300 ease-in hover:-translate-y-[2px]"
         >
           <p className="text-xl font-medium">Book</p>
-          <Submit className="stroke-secondary-text h-[22px] w-[22px] stroke-3" />
+          <Submit className="stroke-secondary-text dark:stroke-dark-mode h-[22px] w-[22px] stroke-3" />
         </button>
       </div>
 
@@ -137,7 +137,7 @@ const BookingSection = ({}) => {
             onClick={() => setSelectedTime(Timing.Morning)}
           >
             <SunSvg
-              className={`${selectedTime === "morning" ? "stroke-secondary-text" : "stroke-primary-text"} h-[22px] w-[22px] duration-200 ease-linear`}
+              className={`${selectedTime === "morning" ? "stroke-secondary-text dark:stroke-dark-mode" : "stroke-primary-text"} h-[22px] w-[22px] duration-200 ease-linear`}
             />
           </IconButtonPrimary>
           <IconButtonPrimary
@@ -146,7 +146,7 @@ const BookingSection = ({}) => {
             onClick={() => setSelectedTime(Timing.Afternoon)}
           >
             <SunSvg
-              className={`${selectedTime === "afternoon" ? "stroke-secondary-text" : "stroke-primary-text"} h-[22px] w-[22px] rotate-90 duration-200 ease-linear`}
+              className={`${selectedTime === "afternoon" ? "stroke-secondary-text dark:stroke-dark-mode" : "stroke-primary-text"} h-[22px] w-[22px] rotate-90 duration-200 ease-linear`}
             />
           </IconButtonPrimary>
         </div>
@@ -156,7 +156,7 @@ const BookingSection = ({}) => {
           <div className="border-primary mt-[48px] flex w-fit gap-15 rounded-2xl border px-[40px] py-5">
             {/* City from */}
             <CitySelectionInput
-              SvgIcon={<Location />}
+              SvgIcon={<Location className="dark:stroke-dark-mode" />}
               cityOptions={cityOptions}
               description="From City"
               selectedCity={selectedCityFrom}
@@ -165,7 +165,9 @@ const BookingSection = ({}) => {
 
             {/* City to */}
             <CitySelectionInput
-              SvgIcon={<BusStop />}
+              SvgIcon={
+                <BusStop className="stroke-secondary-text dark:stroke-dark-mode" />
+              }
               cityOptions={cityOptions}
               description="To City"
               selectedCity={selectedCityTo}
@@ -174,11 +176,11 @@ const BookingSection = ({}) => {
 
             {/* Selction : Date */}
             <div className="flex gap-2">
-              <div className="bg-primary flex h-[38px] w-[38px] items-center justify-center rounded-full fill-white">
+              <div className="bg-primary dark:fill-dark-mode flex h-[38px] w-[38px] items-center justify-center rounded-full fill-white">
                 <Calender />
               </div>
               <div>
-                <p className="text-grey text-[12px] font-medium">
+                <p className="text-grey dark:text-secondary-text text-[12px] font-medium">
                   Journey Date
                 </p>
                 <input
@@ -188,7 +190,7 @@ const BookingSection = ({}) => {
                   max={maxJourneyDate}
                   value={journeyDate}
                   onChange={(e) => setJourneyDate(e.target.value)}
-                  className="text-primary cursor-pointer font-light"
+                  className="text-primary dark:text-primary-light dark:bg-dark-mode cursor-pointer font-light"
                   required
                 />
               </div>
@@ -202,7 +204,7 @@ const BookingSection = ({}) => {
             disabled={Boolean(globalState.error)}
             className="bg-primary hover:shadow-pink mx-auto mt-[48px] w-[80px] cursor-pointer place-items-center rounded-[15px] duration-300 ease-out hover:scale-102"
           >
-            <Submit className="stroke-secondary-text h-[48px] w-[48px] stroke-3" />
+            <Submit className="stroke-secondary-text dark:stroke-dark-mode h-[40px] w-[40px] stroke-3" />
           </button>
         </div>
       </div>
