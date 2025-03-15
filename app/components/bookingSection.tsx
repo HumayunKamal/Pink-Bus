@@ -202,7 +202,7 @@ const BookingSection = ({}) => {
             type="submit"
             onClick={submitHandler}
             disabled={Boolean(globalState.error)}
-            className="bg-primary hover:shadow-pink mx-auto mt-[48px] w-[80px] cursor-pointer place-items-center rounded-[15px] duration-300 ease-out hover:scale-102"
+            className="bg-primary hover:shadow-pink mx-auto mt-[48px] flex w-[80px] cursor-pointer place-items-center justify-center rounded-[15px] duration-300 ease-out hover:scale-102"
           >
             <Submit className="stroke-secondary-text dark:stroke-dark-mode h-[40px] w-[40px] stroke-3" />
           </button>
